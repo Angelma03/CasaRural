@@ -20,7 +20,16 @@ class CasasSeeder extends Seeder
             'descripcion'=>'Descripcion',
             'direccion'=>'La manjoya 22,3A',
             'precio' => "20",
-            'imagen' => "../public/images/empresa.jpg"
+            'imagen' => "images/empresa.jpg"
+        ]);
+        DB::table('casas')->insert([
+            'user_id'=>\App\Models\User::all()->where('name','<>','admin')->random()->id,
+            'nombre'=> 'Urbanizacion de Lujo',
+            'dueño'=> 'Piso',
+            'descripcion'=>'Descripcion',
+            'direccion'=>'La manjoya 22,3A',
+            'precio' => "20",
+            'imagen' => "images/empresa.jpg"
         ]);
     }
 }

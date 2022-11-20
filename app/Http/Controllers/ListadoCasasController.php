@@ -12,11 +12,10 @@ use Illuminate\Validation\Rules\Unique;
 
 class listadoCasasController extends Controller
 {
-  
 
     public function index()
     {
-        return view("listadoCasas");
+        $casas=Casas::all();
+        return view('listadocasas', compact('casas'));
     }
-
 }

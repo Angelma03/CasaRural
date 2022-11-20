@@ -19,7 +19,7 @@ class Userseeder extends Seeder
             'name'=>'admin',
             'email'=>'admin@hotmail.com',
             'email_verified_at'=>now(),
-            'password'=>Hash::make('admin')
+            'password'=>Hash::make('admin'),
         ]);
         \App\Models\User::factory(3)->create();
     }

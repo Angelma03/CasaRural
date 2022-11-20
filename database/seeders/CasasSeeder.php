@@ -14,13 +14,13 @@ class CasasSeeder extends Seeder
     public function run()
     {
         DB::table('casas')->insert([
-            'user_id'=>'\App\Models\User::all()->where('name','<>','admin')->random()->id',
+            'user_id'=>\App\Models\User::all()->where('name','<>','admin')->random()->id,
             'nombre'=> 'Urbanizacion de Lujo',
             'dueño'=> 'Piso',
             'descripcion'=>'Descripcion',
             'direccion'=>'La manjoya 22,3A',
             'precio' => "20",
-            'imagen' => "prueba"
+            'imagen' => "../public/images/empresa.jpg"
         ]);
     }
 }

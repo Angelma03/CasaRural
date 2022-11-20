@@ -25,9 +25,9 @@
         </div>
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/">Inicio</a></li>
+                <a class="nav-link active" href="/">Inicio</a></li>
             <li class="nav-item">
-                <a class="nav-link" href="/home">Nuestras casas </a>
+                <a class="nav-link" href="{{ url('/listadocasas') }}">Nuestras casas </a>
             </li>
         </ul>
         @if(Route::has('login'))

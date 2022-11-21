@@ -1,14 +1,34 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Administracion Dueño') }}</title>
+
+ <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <title>Listado Casas</title>
+<style>
+    .btn-crear{
+        
+        background-color:#098824;
+    }
+    .btn-crear:hover{
+        background-color:#096D24;
+    }
+    .a-crear{
+        color:black;
+    }
+    .a-crear:hover{
+        color:blue;
+    }
+</style>
 </head>
 <body>
 <div class="container-fluid">
@@ -22,14 +42,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">Inicio</a></li>
             <li class="nav-item">
-                <a class="nav-link active" href="{{ url('/listadocasas') }}">Nuestras casas </a>
+                <a class="nav-link" href="{{ url('/listadocasas') }}">Nuestras casas </a>
             </li>
         </ul>
         @if(Route::has('login'))
                 @auth
                 <ul class="navbar-nav navbar-right">
                 <li class="nav-item">
-                        <a class="nav-link" href="/dueño">Dueño</a>
+                        <a class="nav-link active" href="/dueño">Dueño</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 1 16 16">
@@ -58,29 +78,56 @@
         @endif
     </div>
     </nav>
+
 <!-- Cuerpo -->
+<div class="row mt-4 justify-content-center">
+    <div class="col-lg-10 text-center">
+        <h2>Listado casas de: {{ Auth::user()->name }}</h2>
+    </div>    
+</div>
 
-@forelse($casas as $casa)
-                <div class="row mt-4">
-                    <div class="col-lg-6">
-                        <img src="{{$casa->imagen}}" class="img-fluid" alt="Responsive image">
-                    </div>
-                    <div class="col-lg-5">
-                        <h2>{{$casa->nombre}}</h2>
-                        <p>{{$casa->direccion}}</p>
-                        <p><?php
-                           echo substr($casa->descripcion,0,450).' ...'; 
-                        ?></p>
-                        <p>{{$casa->precio}} € por dia</p>
-                    </div>
-                </div>
-                @empty
-                <div class="row mt-3">
-                        <p class="h1">No hay casas disponibles</p>
-                </div>
-            @endforelse
+<div class="row mt-4 justify-content-center">
+    <button type='button' class="btn btn-crear col-lg-2 border border-transparent rounded">
+        <a class="a-crear text-decoration-none h4" href="{{ route('dueño.create') }}">
+            Crear Nueva Casa
+        </a>
+    </button> 
 
-    <footer class="d-flex flex-wrap justify-content-between align-items-center  p-3 mt-3 mb-0 border-top bg-success">
+
+<!-- Tabla -->
+
+<div class="row mt-4 justify-content-center">
+    <div class="col-lg-10">
+<table class="table table-bordered border-dark bg-secondary">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  @forelse($casas as $casa)
+    <tr>
+      <th scope="row">{{ $casa->id }}</th>
+      <td>{{ $casa->nombre }}</td>
+      <td><?php echo substr($casa->descripcion,0,100).' ...'?></td>
+      <td>{{ $casa->direccion}}</td>
+      <td>{{ $casa->precio }}</td>
+      <td>{{ $casa->imagen }}</td>
+    </tr>
+    @empty
+    @endforelse
+  </tbody>
+</table>
+</div>
+
+<!--Footer-->
+<footer class="d-flex flex-wrap justify-content-between align-items-center  p-3 mt-3 mb-0 border-top bg-success">
         <div class="col-md-4 d-flex align-items-center">
             <span class="mb-3 mb-md-0 text-white">© Ángel Monjardín Antón, 2022 </span>
         </div>
@@ -97,5 +144,6 @@
         </ul>
     </footer>
 </div>
+
 </body>
 </html>

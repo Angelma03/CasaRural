@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\ListadoCasasController;
+use \App\Http\Controllers\DueñoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +24,5 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 
 Route::get('/listadocasas', [\App\Http\Controllers\ListadoCasasController::class, 'index'])->name('listadoCasas');
 
-Route::get('/dueño', [\App\Http\Controllers\DueñoController::class, 'index'])->name('dueño');
+Route::get('/dueño',[\App\Http\Controllers\DueñoController::class, 'index'])->name('dueño');
+Route::resource('dueño',DueñoController::class);Auth::routes();

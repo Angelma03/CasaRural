@@ -25,7 +25,7 @@ class DueñoController extends Controller
         $user = Auth::user();
         $casas = Casas::with("user")->paginate(10);
 
-        return view("dueño.index", compact("casas"));
+        return view("casas.index", compact("casas"));
     }
 
     public function create()
@@ -33,9 +33,9 @@ class DueñoController extends Controller
         $casa = new Casas;
         $title = __("Crear casa");
         $textButton = __("Crear");
-        $route = route("dueño.store");
+        $route = route("casas.store");
 
-        return view("dueño.create", compact("title", "textButton", "route", "casa"));
+        return view("casas.create", compact("title", "textButton", "route", "casa"));
     }
 
     public function store(Request $request)
@@ -62,7 +62,7 @@ class DueñoController extends Controller
             ]   
         ));
 
-        return redirect(route("dueño.index"))
+        return redirect(route("casas.index"))
             ->with("success", __("Casa creada!"));
     }
 
@@ -71,8 +71,8 @@ class DueñoController extends Controller
         $update = true;
         $title = __("Editar proyecto");
         $textButton = __("Actualizar");
-        $route = route("dueño.update", ["dueño" => $casa]);
-        return view("dueño.edit", compact("update", "title", "textButton", "route", "casa"));
+        $route = route("dueño.update", ["casa" => $casa]);
+        return view("casas.edit", compact("update", "title", "textButton", "route", "casa"));
     }
 
 
@@ -97,7 +97,7 @@ class DueñoController extends Controller
             );
         }
         $casa->save();
-        return redirect(route("dueño.index"))
+        return redirect(route("casas.index"))
         ->with("success", __("Casa actualizada!"));
     }
 

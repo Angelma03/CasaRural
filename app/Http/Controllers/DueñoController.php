@@ -42,20 +42,21 @@ class DueñoController extends Controller
     {
         $this->validate($request, [
             "nombre" => "required|max:50",
-            "tipo" => "required|string|max:25",
+            "dueño" => "required|min:1",
+            "descripcion" => "required|min:50",
             "direccion" =>"required|string|max:50",
-            "precio" => "required|integer|min:20000",
+            "precio" => "required|integer",
             "imagen" => "required|image|mimes:jpg,gif,png,jpeg|"
         ]);
 
         $file = $request->file('imagen');
 
         $casa = Casas::create(array_merge(
-            $request->only("nombre", "tipo","direccion","precio"),
+            $request->only("nombre","dueño","descripcion","direccion","precio"),
             [
                 "imagen" => $file->storeAs('images',
                     $file->getClientOriginalName()
-                    
+
                 ),
                 'user_id' => Auth::user()->id
             ]   
@@ -70,7 +71,7 @@ class DueñoController extends Controller
         $update = true;
         $title = __("Editar proyecto");
         $textButton = __("Actualizar");
-        $route = route("dueño.update", ["casa" => $casa]);
+        $route = route("dueño.update", ["dueño" => $casa]);
         return view("dueño.edit", compact("update", "title", "textButton", "route", "casa"));
     }
 
@@ -81,12 +82,13 @@ class DueñoController extends Controller
 
         $this->validate($request, [
             "nombre" => "required|unique:casas,nombre," . $casa->id,
-            "tipo" => "required|string|max:25",
+            "dueño" => "required|string|min:1",
+            "descripcion" => "required|min:50",
             "direccion" =>"required|string|max:50",
-            "precio" => "required|int|min:20000",
+            "precio" => "required|int|max:1000",
             "imagen" => "required|image|mimes:jpg,gif,png,jpeg|"
         ]);
-        $casa->fill($request->only("nombre", "tipo","direccion","precio"));
+        $casa->fill($request->only("nombre","dueño","descripcion","direccion","precio"));
         if($request->hasFile('imagen')){
             $req_file = $request->file('imagen');
             Storage::delete('images/'.$casa->imagen);

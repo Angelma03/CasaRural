@@ -119,12 +119,23 @@
       <td>{{ $casa->direccion}}</td>
       <td>{{ $casa->precio }}</td>
       <td>{{ $casa->imagen }}</td>
+      <td>        <button type='button'>
+                    <a href="{{ route('dueño.edit',['dueño'=> $casa])}}">{{ __("Editar") }}</a>
+                    </button>
+</td>
     </tr>
     @empty
     @endforelse
   </tbody>
 </table>
 </div>
+ 
+@if($casas->count())
+        <div class="mt-3">
+            {{ $casas->links() }}
+           
+        </div>
+    @endif
 
 <!--Footer-->
 <footer class="d-flex flex-wrap justify-content-between align-items-center  p-3 mt-3 mb-0 border-top bg-success">

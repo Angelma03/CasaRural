@@ -29,7 +29,7 @@
                 @auth
                 <ul class="navbar-nav navbar-right">
                 <li class="nav-item">
-                        <a class="nav-link" href="/dueño">Dueño</a>
+                        <a class="nav-link" href="/casas">Dueño</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 1 16 16">

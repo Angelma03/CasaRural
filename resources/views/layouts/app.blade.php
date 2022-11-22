@@ -20,7 +20,7 @@
         <header class="bg-green-900 py-6">
             <div class="container mx-auto flex justify-between items-center px-6">
                 <div>
-                    <a href="{{ url('/dueño') }}" class="text-lg font-semibold text-gray-100 no-underline">
+                    <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
                         Casa Rural
                     </a>
                 </div>

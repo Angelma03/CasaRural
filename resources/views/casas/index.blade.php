@@ -49,7 +49,7 @@
                 @auth
                 <ul class="navbar-nav navbar-right">
                 <li class="nav-item">
-                        <a class="nav-link active" href="/dueño">Dueño</a>
+                        <a class="nav-link active" href="/casas">Dueño</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 1 16 16">
@@ -88,7 +88,7 @@
 
 <div class="row mt-4 justify-content-center">
     <button type='button' class="btn btn-crear col-lg-2 border border-transparent rounded">
-        <a class="a-crear text-decoration-none h4" href="{{ route('dueño.create') }}">
+        <a class="a-crear text-decoration-none h4" href="{{ route('casas.create') }}">
             Crear Nueva Casa
         </a>
     </button> 
@@ -120,7 +120,7 @@
       <td>{{ $casa->precio }}</td>
       <td>{{ $casa->imagen }}</td>
       <td>        <button type='button'>
-                    <a href="{{ route('dueño.edit',['dueño'=> $casa])}}">{{ __("Editar") }}</a>
+                    <a href="{{ route('casas.edit',['casa'=> $casa])}}">{{ __("Editar") }}</a>
                     </button>
 </td>
     </tr>

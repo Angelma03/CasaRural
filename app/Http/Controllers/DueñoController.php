@@ -42,15 +42,13 @@ class DueñoController extends Controller
     {
         $this->validate($request, [
             "nombre" => "required|max:50",
-            "dueño" => "required|min:1",
             "descripcion" => "required|min:50",
             "direccion" =>"required|string|max:50",
             "precio" => "required|integer",
             "imagen" => "required|image|mimes:jpg,gif,png,jpeg|"
         ]);
-
         $file = $request->file('imagen');
-
+        
         $casa = Casas::create(array_merge(
             $request->only("nombre","dueño","descripcion","direccion","precio"),
             [
@@ -58,7 +56,8 @@ class DueñoController extends Controller
                     $file->getClientOriginalName()
 
                 ),
-                'user_id' => Auth::user()->id
+                'user_id' => Auth::user()->id,
+                'dueño' => Auth::user()->name,
             ]   
         ));
 

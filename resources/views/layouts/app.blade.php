@@ -31,15 +31,16 @@
                             <a class="no-underline hover:underline" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                         @endif
                     @else
+                        <a class="nav-link" href="/casas">Dueño</a>
                         <span>{{ Auth::user()->name }}</span>
-
-                        <a href="{{ route('logout') }}"
+                        <!-- <a href="{{ route('logout') }}"
                            class="no-underline hover:underline"
                            onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">{{ __('Cerrar Sesion') }}</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                             {{ csrf_field() }}
-                        </form>
+                        </form> -->
+                        
                     @endguest
                 </nav>
             </div>

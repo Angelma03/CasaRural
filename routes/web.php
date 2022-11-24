@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ListadoCasasController;
 use \App\Http\Controllers\DueñoController;
-
+use \App\Http\Controllers\ReservasController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +28,6 @@ Route::get('/listadocasas/{id}', [\App\Http\Controllers\ListadoCasasController::
 
 Route::get('/casas',[\App\Http\Controllers\DueñoController::class, 'index'])->name('casas');
 Route::resource('casas',DueñoController::class);Auth::routes();
+
+Route::get('/reservas',[\App\Http\Controllers\ReservasController::class, 'index'])->name('reservas');
+Route::resource('reservas',ReservasController::class);Auth::routes();

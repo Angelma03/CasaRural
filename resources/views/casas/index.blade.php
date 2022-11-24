@@ -22,7 +22,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-success">
     <div class="container-fluid">
             <div class="navbar-header">
-            <a class="navbar-brand">Casa Rural</a>
+            <img src="/images/logo.jpg" alt="Responsive image"  height="50px">
         </div>
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
@@ -66,7 +66,7 @@
     </nav>
     
     @if (session('success'))
-    <div class="bg-red-100 text-center border border-red-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+    <div class="bg-dark text-center border border-danger text-success px-4 py-3 rounded relative" role="alert">
     <p><strong class="font-bold">{{ session('success') }}</strong></p>
     </div>
 @endif
@@ -106,7 +106,7 @@
     <tr>
       <th scope="row">{{ $casa->id }}</th>
       <td>{{ $casa->nombre }}</td>
-      <td><?php echo substr($casa->descripcion,0,100).' ...'?></td>
+      <td><?php echo substr($casa->descripcion,0,200).' ...'?></td>
       <td>{{ $casa->direccion}}</td>
       <td>{{ $casa->precio }}</td>
       <td>{{ $casa->imagen }}</td>

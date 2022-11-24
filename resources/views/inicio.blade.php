@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-success">
     <div class="container-fluid">
             <div class="navbar-header">
-            <a class="navbar-brand">Casa Rural</a>
+            <img src="/images/logo.jpg" alt="Responsive image"  height="50px">
         </div>
         <ul class="navbar-nav me-auto">
             <li class="nav-item">

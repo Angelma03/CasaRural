@@ -18,7 +18,7 @@
             <input name="nombre" value="{{ old('nombre') ?? $casa->nombre }}" class="form-control" id="nombre" aria-describedby="nombre">
             <div id="nombre" class="form-text">Escribe el nombre de la casa</div>
             @error("nombre")
-            <div class="border border-danger bg-danger text-white p-2">
+            <div class="border border-red-400 rounded-b bg-red-100 mt-1 px-4 py-3 text-red-700">
                 {{ $message }}
             </div>
             @enderror
@@ -28,7 +28,7 @@
             <textarea name="descripcion"  class="form-control" id="descripcion" aria-describedby="descripcion">{{ old('descripcion') ?? $casa->descripcion }}</textarea>
             <div id="descripcion"  class="form-text">Escribe la descripción de la casa</div>
             @error("descripcion")
-            <div class="border border-danger bg-danger text-white p-2">
+            <div class="border border-red-400 rounded-b bg-red-100 mt-1 px-4 py-3 text-red-700">
                 {{ $message }}
             </div>
             @enderror
@@ -38,7 +38,7 @@
             <input name="direccion" value="{{ old('direccion') ?? $casa->direccion }}" class="form-control" id="direccion" aria-describedby="direccion">
             <div id="direccion" class="form-text">Escribe la direccion de la casa</div>
             @error("direccion")
-            <div class="border border-danger bg-danger text-white p-2">
+            <div class="border border-red-400 rounded-b bg-red-100 mt-1 px-4 py-3 text-red-700">
                 {{ $message }}
             </div>
             @enderror
@@ -48,7 +48,7 @@
             <input name="precio" value="{{ old('precio') ?? $casa->precio }}"class="form-control" id="precio" aria-describedby="precio">
             <div id="precio" class="form-text">Escribe el precio de casa por dia</div>
             @error("precio")
-            <div class="border border-danger bg-danger text-white p-2">
+            <div class="border border-danger">
                 {{ $message }}
             </div>
             @enderror
@@ -62,7 +62,7 @@
             @endif
             <input class="form-control" type="file" id="imagen" name="imagen">
             @error("imagen")
-            <div class="border border-danger bg-danger text-white p-2">
+            <div class="imagen">
             {{ $message }}
             </div>
             @enderror

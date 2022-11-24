@@ -8,13 +8,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', '$title') }}</title>
+    <title>{{ config('app.name', 'Administracion Dueño') }}</title>
 
  <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
+<link href="/css/estilos.css" rel="stylesheet">
 </head>
 <body>
 <div class="container-fluid">
@@ -22,7 +22,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-success">
     <div class="container-fluid">
             <div class="navbar-header">
-            <img src="/images/logo.jpg" alt="Responsive image"  height="50px">
+            <a class="navbar-brand">Casa Rural</a>
         </div>
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
@@ -64,11 +64,88 @@
         @endif
     </div>
     </nav>
+    
+    @if (session('success'))
+    <div class="bg-red-100 text-center border border-red-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+    <p><strong class="font-bold">{{ session('success') }}</strong></p>
+    </div>
+@endif
+<!-- Cuerpo -->
+<div class="row mt-4 justify-content-center">
+    <div class="col-lg-10 text-center">
+        <h2>Listado casas de: {{ Auth::user()->name }}</h2>
+    </div>    
+</div>
+
+<div class="row mt-4 justify-content-center">
+    <button type='button' class="btn btn-crear-casa col-lg-2 border border-transparent rounded">
+        <a class="a-crear-casa text-decoration-none h4" href="{{ route('casas.create') }}">
+            Crear Nueva Casa
+        </a>
+    </button> 
 
 
-        @yield('content')
-        
-        <footer class="d-flex flex-wrap justify-content-between align-items-center  p-3 mt-3 mb-0 border-top bg-success">
+<!-- Tabla -->
+
+<div class="row mt-4 justify-content-center">
+    <div class="col-lg-10">
+<table class="table table-bordered border-dark bg-secondary">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  @forelse($casas as $casa)
+    <tr>
+      <th scope="row">{{ $casa->id }}</th>
+      <td>{{ $casa->nombre }}</td>
+      <td><?php echo substr($casa->descripcion,0,100).' ...'?></td>
+      <td>{{ $casa->direccion}}</td>
+      <td>{{ $casa->precio }}</td>
+      <td>{{ $casa->imagen }}</td>
+    <td>
+        <div class="row justify-content-center ">
+            <button type="button" class="btn btn-warning col-lg-10">
+                <a class="text-dark text-decoration-none" href="{{route('casas.edit',['casa' => $casa]) }}">Editar</a>
+            </button>
+        </div>
+        <div class="row justify-content-center mt-2">
+            <button type="button" class="btn btn-danger col-lg-10">
+                <a href="#" onclick="event.preventDefault();
+                document.getElementById('delete-casa-{{ $casa->id }}-form').submit();" class="text-white text-decoration-none">
+                Eliminar
+                </a>
+            </button>
+        </div>
+        <form id="delete-casa-{{ $casa->id }}-form" action="{{ route('casas.destroy', ['casa' => $casa]) }}" method="POST" class="hidden">
+            @method("DELETE")
+            @csrf
+        </form>
+    </td>
+    </tr>
+    @empty
+    @endforelse
+  </tbody>
+</table>
+</div>
+ 
+@if($casas->count())
+        <div class="mt-3">
+            {{ $casas->links() }}
+           
+        </div>
+    @endif
+
+
+<!--Footer-->
+<footer class="d-flex flex-wrap justify-content-between align-items-center  p-3 mt-3 mb-0 border-top bg-success">
         <div class="col-md-4 d-flex align-items-center">
             <span class="mb-3 mb-md-0 text-white">© Ángel Monjardín Antón, 2022 </span>
         </div>
@@ -85,5 +162,6 @@
         </ul>
     </footer>
 </div>
+
 </body>
 </html>

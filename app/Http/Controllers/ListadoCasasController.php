@@ -18,4 +18,10 @@ class listadoCasasController extends Controller
         $casas=Casas::all();
         return view('listadocasas', compact('casas'));
     }
+
+    public function show(int $id)
+    {
+        $casa = Casas::find($id);
+        return view('detalle',compact('casa'));
+    }
 }

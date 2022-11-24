@@ -81,7 +81,6 @@ class DueñoController extends Controller
 
         $this->validate($request, [
             "nombre" => "required|unique:casas,nombre," . $casa->id,
-            "dueño" => "required|string|min:1",
             "descripcion" => "required|min:50",
             "direccion" =>"required|string|max:50",
             "precio" => "required|int|max:1000",

@@ -24,5 +24,7 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 
 Route::get('/listadocasas', [\App\Http\Controllers\ListadoCasasController::class, 'index'])->name('listadoCasas');
 
+Route::get('/listadocasas/{id}', [\App\Http\Controllers\ListadoCasasController::class, 'show'])->name('show');
+
 Route::get('/casas',[\App\Http\Controllers\DueñoController::class, 'index'])->name('casas');
 Route::resource('casas',DueñoController::class);Auth::routes();

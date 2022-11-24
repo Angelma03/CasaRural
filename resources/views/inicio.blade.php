@@ -11,9 +11,11 @@
     <title>{{ config('app.name', 'Casa Rural') }}</title>
 
  <!-- CSS only -->
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<link href="/css/estilos.css" rel="stylesheet">
 </head>
 <body>
 <div class="container-fluid">
@@ -111,7 +113,9 @@
     </div>
     <div class="row">
         <div class="d-grid gap-2 col-3 mx-auto">
-        <a href="#" class="btn btn-personal text-white" role="button" data-bs-toggle="button">Listado de casas</a>
+            <button type='button' class="btn btn-personal">
+                <a class="text-decoration-none text-white h4" href="/listadocasas">Listado Casas</a>
+            </button> 
         </div>
     </div>
     <!--Footer -->
@@ -134,12 +138,5 @@
   </footer>
 </div>
 </body>
-<style>
-    .btn-personal{
-        background-color:#661717;
-    }
-    .btn-personal:hover{
-        background-color:#7A0F0F;
-    }
-</style>
+
 </html>

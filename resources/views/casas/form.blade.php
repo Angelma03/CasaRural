@@ -11,7 +11,7 @@
     @isset($update)
         @method("PUT")
     @endisset
-            <div class="row bg-secondary mb-1">
+            <div class="row bg-form mb-1">
                 <h3 class="text-center ">Formulario para {{$title}}</h3>
             </div>
             <label for="nombre" class="form-label"> {{ __("Nombre") }}: </label>
@@ -25,8 +25,8 @@
 
 
             <label for="descripcion" class="form-label">Descripción: </label>
-            <textarea name="descripcion" class="form-control" id="descripcion" aria-describedby="descripcion"></textarea>
-            <div id="descripcion" value="{{ old('descripcion') ?? $casa->descripcion }}" class="form-text">Escribe la descripción de la casa</div>
+            <textarea name="descripcion"  class="form-control" id="descripcion" aria-describedby="descripcion">{{ old('descripcion') ?? $casa->descripcion }}</textarea>
+            <div id="descripcion"  class="form-text">Escribe la descripción de la casa</div>
             @error("descripcion")
             <div class="border border-red-400 rounded-b bg-red-100 mt-1 px-4 py-3 text-red-700">
                 {{ $message }}

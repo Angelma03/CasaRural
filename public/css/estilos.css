@@ -1,0 +1,21 @@
+.bg-form{
+    background-color: rgb(194, 187, 187);
+}
+.btn-personal{
+    background-color:#661717;
+}
+.btn-personal:hover{
+    background-color:#7A0F0F;
+}
+.btn-crear-casa{
+    background-color:#098824;
+}
+.btn-crear-casa:hover{
+    background-color:#096D24;
+}
+.a-crear-casa{
+    color:black;
+}
+.a-crear-casa:hover{
+    color:blue;
+}

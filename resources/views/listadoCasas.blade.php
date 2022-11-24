@@ -66,7 +66,7 @@
                         <img src="{{$casa->imagen}}" class="img-fluid" alt="Responsive image">
                     </div>
                     <div class="col-lg-5">
-                        <h2>{{$casa->nombre}}</h2>
+                    <a class="text-decoration-none text-primary" href="{{ route('show',['id'=> $casa->id])}}"><h2>{{$casa->nombre}}</h2></a>
                         <p>{{$casa->direccion}}</p>
                         <p><?php
                            echo substr($casa->descripcion,0,450).' ...'; 

@@ -1,4 +1,4 @@
-@extends("layouts.casas")
+@extends("layouts.reservas")
 <link href="/css/estilos.css" rel="stylesheet">
 @section("content")
 <div class="row mt-4  justify-content-center">
@@ -41,6 +41,4 @@
         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </div>
-
-
 @endsection

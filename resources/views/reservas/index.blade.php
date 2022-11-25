@@ -1,4 +1,8 @@
 @extends("layouts.reservas")
+<link href="/css/estilos.css" rel="stylesheet">
+<?php
+use App\Models\Casas;
+?>
 @section("content")
 <!-- Cuerpo -->
 <div class="row mt-4 justify-content-center">
@@ -19,46 +23,22 @@
 
 <div class="row mt-4 justify-content-center">
     <div class="col-lg-10">
-<table class="table table-bordered border-dark bg-secondary">
+<table class="table table-bordered border-dark bg-form">
   <thead>
     <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Descripcion</th>
-      <th scope="col">Direccion</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Imagen</th>
-      <th scope="col">Acciones</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Nombre de la casa</th>
+      <th scope="col">Propietario de la casa</th>
+      <th scope="col">fechaEntrada</th>
+      <th scope="col">FechaSalida</th>
+      <th scope="col">capacidad</th>
     </tr>
   </thead>
   <tbody>
-  @forelse($casas as $casa)
+  @forelse($reservas as $reserva)
     <tr>
-      <th scope="row">{{ $casa->id }}</th>
-      <td>{{ $casa->nombre }}</td>
-      <td><?php echo substr($casa->descripcion,0,100).' ...'?></td>
-      <td>{{ $casa->direccion}}</td>
-      <td>{{ $casa->precio }}</td>
-      <td>{{ $casa->imagen }}</td>
-    <td>
-        <div class="row justify-content-center ">
-            <button type="button" class="btn btn-warning col-lg-10">
-                <a class="text-dark text-decoration-none" href="{{route('casas.edit',['casa' => $casa]) }}">Editar</a>
-            </button>
-        </div>
-        <div class="row justify-content-center mt-2">
-            <button type="button" class="btn btn-danger col-lg-10">
-                <a href="#" onclick="event.preventDefault();
-                document.getElementById('delete-casa-{{ $casa->id }}-form').submit();" class="text-white text-decoration-none">
-                Eliminar
-                </a>
-            </button>
-        </div>
-        <form id="delete-casa-{{ $casa->id }}-form" action="{{ route('casas.destroy', ['casa' => $casa]) }}" method="POST" class="hidden">
-            @method("DELETE")
-            @csrf
-        </form>
-    </td>
+      <th scope="row">{{ Auth::user()->name  }}</th>
+      <td>{{ Casas::nombre()->nombre  }}</td>
     </tr>
     @empty
     @endforelse
@@ -66,9 +46,9 @@
 </table>
 </div>
  
-@if($casas->count())
+@if($reservas->count())
         <div class="mt-3">
-            {{ $casas->links() }}
+            {{ $reservas->links() }}
            
         </div>
     @endif

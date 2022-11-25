@@ -89,7 +89,7 @@
 
 <div class="row mt-4 justify-content-center">
     <div class="col-lg-10">
-<table class="table table-bordered border-dark bg-secondary">
+<table class="table table-bordered border-dark bg-form">
   <thead>
     <tr>
       <th scope="col">Id</th>

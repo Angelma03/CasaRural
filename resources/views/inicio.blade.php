@@ -114,7 +114,7 @@
     <div class="row">
         <div class="d-grid gap-2 col-3 mx-auto">
             <button type='button' class="btn btn-personal">
-                <a class="text-decoration-none text-white h4" href="/listadocasas">Listado Casas</a>
+                <a class="text-decoration-none text-white h4" href="/listadocasas">Listado de casas</a>
             </button> 
         </div>
     </div>

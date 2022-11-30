@@ -1,19 +1,15 @@
 @extends("layouts.reservas")
-<link href="/css/estilos.css" rel="stylesheet">
-<?php
-use App\Models\Casas;
-?>
 @section("content")
 <!-- Cuerpo -->
 <div class="row mt-4 justify-content-center">
     <div class="col-lg-10 text-center">
-        <h2>Listado casas de: {{ Auth::user()->name }}</h2>
+        <h2>Listado de reservas  de: {{ Auth::user()->name }}</h2>
     </div>    
 </div>
 
 <div class="row mt-4 justify-content-center">
     <button type='button' class="btn btn-crear-casa col-lg-2 border border-transparent rounded">
-        <a class="a-crear-casa text-decoration-none h4" href="{{ route('casas.create') }}">
+        <a class="a-crear-casa text-decoration-none h4" href="">
             Crear Nueva Casa
         </a>
     </button> 
@@ -27,8 +23,6 @@ use App\Models\Casas;
   <thead>
     <tr>
       <th scope="col">Cliente</th>
-      <th scope="col">Nombre de la casa</th>
-      <th scope="col">Propietario de la casa</th>
       <th scope="col">fechaEntrada</th>
       <th scope="col">FechaSalida</th>
       <th scope="col">capacidad</th>
@@ -38,9 +32,12 @@ use App\Models\Casas;
   @forelse($reservas as $reserva)
     <tr>
       <th scope="row">{{ Auth::user()->name  }}</th>
-      <td>{{ Casas::nombre()->nombre  }}</td>
+      <td>{{$reserva->fechaEntrada}}</td>
+      <td>{{$reserva->fechaSalida}}</td>
+      <td>{{$reserva->capacidad}}</td>
     </tr>
     @empty
+    <h2>El usuario {{ Auth::user()->name  }} no tiene reservas en la casa -></h2>
     @endforelse
   </tbody>
 </table>
@@ -49,7 +46,6 @@ use App\Models\Casas;
 @if($reservas->count())
         <div class="mt-3">
             {{ $reservas->links() }}
-           
         </div>
     @endif
 @endsection

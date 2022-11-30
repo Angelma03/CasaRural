@@ -44,4 +44,7 @@ class User extends Authenticatable
     public function casas(){
         return $this->hasMany(Casas::class);
     }
+    public function reservas(){
+        return $this->hasMany(Reservas::class);
+    }
 }

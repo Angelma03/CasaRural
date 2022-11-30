@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservas;
-
+use App\Models\Casas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
@@ -20,9 +20,17 @@ class ReservasController extends Controller
 
     public function index()
     {
-        $user = Auth::user();
         $reservas = Reservas::with("user")->paginate(10);
-
         return view("reservas.index", compact("reservas"));
+    }
+
+    public function create()
+    {
+        $reserva = new Reservas;
+        $title = __("Crear reserva");
+        $textButton = __("Crear");
+        $route = route("reservas.store");
+
+        return view("reservas.create", compact("title", "textButton", "route", "reserva"));
     }
 }

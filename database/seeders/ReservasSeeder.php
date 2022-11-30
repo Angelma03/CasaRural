@@ -16,9 +16,17 @@ class ReservasSeeder extends Seeder
     {
         DB::table('reservas')->insert([
             'user_id'=>\App\Models\User::all()->where('name','<>','admin')->random()->id,
+            'casa_id'=>\App\Models\Casas::all()->random()->id,
             'fechaEntrada'=> '2021/05/05',
             'fechaSalida'=> '2021/05/05',
             'capacidad'=> '10'
+        ]);
+        DB::table('reservas')->insert([
+            'user_id'=>\App\Models\User::all()->where('name','<>','admin')->random()->id,
+            'casa_id'=>\App\Models\Casas::all()->random()->id,
+            'fechaEntrada'=> '2021/05/05',
+            'fechaSalida'=> '2021/05/05',
+            'capacidad'=> '15'
         ]);
     }
 }

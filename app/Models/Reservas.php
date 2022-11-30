@@ -15,6 +15,7 @@ class Reservas extends Model
         self:: creating(function($table){
             if(!app()->runningInConsole()){
             $table->user_id = auth()->id();
+            $table->reservas_id = auth()->id();
             }
         }
          );
@@ -22,5 +23,8 @@ class Reservas extends Model
 
       public function user(){
         return $this->belongsTo(User::class);
+    }
+    public function casas(){
+        return $this->belongsTo(Casas::class);
     }
 }

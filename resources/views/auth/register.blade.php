@@ -3,24 +3,25 @@
 @section('content')
 <div class="row mt-4 justify-content-center">
 <div class="col-lg-4 border border-dark">
-<form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
-@csrf
-
-    <div class="row text-center bg-primary">
+<div class="row text-center bg-primary">
         <h1>Registrarse</h1>
     </div>
-    <label for="nombre" class="form-label mt-2">{{ __('Nombre') }}:</label>
-    <input id="nombre" type="text" class="form-control" name="nombre" 
-    value="{{ old('nombre') }}" required autocomplete="nombre" autofocus>
-    <div id="email" class="form-text">Escribe tu nombre de usuario</div>
-        @error('nombre')
-    <p class="border border-danger bg-danger text-white p-2">
+<form method="POST" action="{{ route('register') }}">
+@csrf
+
+   
+    <label for="name" class="form-label mt-2">{{ __('Nombre') }}:</label>
+    <input id="name" type="text" class="form-control  @error('name')  border-danger @enderror"
+    name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    <div id="name" class="form-text">Escribe tu nombre de usuario</div>
+        @error('name')
+    <div class="border border-danger bg-danger text-white p-2">
         {{ $message }}
-    </p>
+</div>
     @enderror
 
     <label for="email" class="form-label mt-2">{{ __('Correo Electronico') }}:</label>
-    <input id="email" type="email" class="form-control" name="email"
+    <input id="email" type="email" class="form-control @error('email') border-danger @enderror" name="email"
     value="{{ old('email') }}" required autocomplete="email" autofocus>
     <div id="email" class="form-text">Escribe tu correo electronico</div>
         @error('email')
@@ -30,9 +31,9 @@
     @enderror
 
     <label for="password" class="form-label mt-2">{{ __('Contraseña') }}:</label>
-    <input id="password" type="password" class="form-control" name="password" required >
+    <input id="password" type="password" class="form-control @error('password') border-danger @enderror" name="password" required autocomplete="new-password" >
     <div id="password" class="form-text">Escribe tu contraseña</div>
-    @error('contraseña')
+    @error('password')
     <div class="border border-danger bg-danger text-white p-2">
         {{ $message }}
     </div>
@@ -44,8 +45,10 @@
     <input id="password-confirm" type="password" class="form-control"
     name="password_confirmation" required autocomplete="new-password">
     <div id="password" class="form-text">Confirma tu contraseña</div>
+
+
     <div class="row m-3">
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary leading-normal">
             {{ __('Registrarse') }}
         </button>
     </div>

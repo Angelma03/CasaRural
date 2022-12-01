@@ -33,7 +33,7 @@
   @forelse($reservas as $reserva)
     <tr>
       <th scope="row">{{ Auth::user()->name  }}</th>
-      <td>{{$reserva->casa->nombre}}</td>
+      <td>{{$reserva->casas->nombre}}</td>
       <td>{{$reserva->fechaEntrada}}</td>
       <td>{{$reserva->fechaSalida}}</td>
       <td>{{$reserva->capacidad}}</td>

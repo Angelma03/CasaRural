@@ -37,20 +37,15 @@
                 <span class="ml-2">{{ __('Recordarme') }}</span>
             </label>
         </div>
-        <div class="col-lg-6">
-            @if (Route::has('password.request'))
-            <a href="{{ route('password.request') }}">
-                {{ __('¿Olvidaste la contraseña?') }}
-            </a>
-            @endif
-        </div>
     </div>
 
     <div class="row m-3">
         <button type="submit" class="btn btn-primary">
-            {{ __('Iniciar Sesion') }}
+        {{ __('Iniciar Sesion') }}
         </button>
     </div>
+    
+ 
         @if (Route::has('register'))
         <p class="text-center text-secondary">
             {{ __("¿No tienes cuenta?") }}

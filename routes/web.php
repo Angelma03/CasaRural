@@ -17,7 +17,7 @@ use \App\Http\Controllers\ReservasController;
 
 Route::get('/', function () {
     return view('inicio');
-});
+})->name('inicio');
 Auth::routes();
 
 

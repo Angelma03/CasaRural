@@ -24,6 +24,7 @@
     <tr>
       <th scope="col">Cliente</th>
       <th scope="col">fechaEntrada</th>
+      <th scope="col">fechaEntrada</th>
       <th scope="col">FechaSalida</th>
       <th scope="col">capacidad</th>
     </tr>
@@ -32,6 +33,7 @@
   @forelse($reservas as $reserva)
     <tr>
       <th scope="row">{{ Auth::user()->name  }}</th>
+      <td>{{$reserva->casa->nombre}}</td>
       <td>{{$reserva->fechaEntrada}}</td>
       <td>{{$reserva->fechaSalida}}</td>
       <td>{{$reserva->capacidad}}</td>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ListadoCasasController;
 use \App\Http\Controllers\DueñoController;
 use \App\Http\Controllers\ReservasController;
+use \App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,10 @@ use \App\Http\Controllers\ReservasController;
 Route::get('/', function () {
     return view('inicio');
 })->name('inicio');
+
+
 Auth::routes();
+Route::get('/register', [\App\Http\Controllers\UserController::class, 'index'])->name('register');
 
 
 Route::get('/listadocasas', [\App\Http\Controllers\ListadoCasasController::class, 'index'])->name('listadoCasas');
@@ -26,7 +30,8 @@ Route::get('/listadocasas', [\App\Http\Controllers\ListadoCasasController::class
 Route::get('/listadocasas/{id}', [\App\Http\Controllers\ListadoCasasController::class, 'show'])->name('show');
 
 Route::get('/casas',[\App\Http\Controllers\DueñoController::class, 'index'])->name('casas');
-Route::resource('casas',DueñoController::class);Auth::routes();
+Route::resource('casas',DueñoController::class);
 
 Route::get('/reservas',[\App\Http\Controllers\ReservasController::class, 'index'])->name('reservas');
-Route::resource('reservas',ReservasController::class);Auth::routes();
+Route::resource('reservas',ReservasController::class);
+

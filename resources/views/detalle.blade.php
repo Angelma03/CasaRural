@@ -32,7 +32,7 @@
 <div class="row mt-4 align-items-center justify-content-center">
     <div class="col-lg-2">
         <button type='button' class="btn btn-primary">
-            <a class="text-decoration-none text-white h4" href="{{ route('reservas.index')}}">Reservar Casa</a>
+            <a class="text-decoration-none text-white h4" href="{{ route('reservas.create')}}">Crear Casa</a>
         </button> 
     </div>
     <div class="col-lg-3">

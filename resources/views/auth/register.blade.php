@@ -46,6 +46,13 @@
     name="password_confirmation" required autocomplete="new-password">
     <div id="password" class="form-text">Confirma tu contraseña</div>
 
+    <label for="rol" class="form-label mt-2">
+        {{ __('Asigna tu rol') }}:
+    </label>
+    <select class="form-select" aria-label="rol">
+        <option selected>Dueño</option>
+        <option value="1">Cliente</option>
+    </select>
 
     <div class="row m-3">
         <button type="submit" class="btn btn-primary leading-normal">

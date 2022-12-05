@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Casas;
 
 class Reservas extends Model
 {
@@ -15,7 +16,7 @@ class Reservas extends Model
         self:: creating(function($table){
             if(!app()->runningInConsole()){
             $table->user_id = auth()->id();
-            $table->casas_id = casas()->id();
+            $table->casa_id = casas()->id();
             }
         }
          );

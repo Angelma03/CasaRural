@@ -34,9 +34,6 @@
     <tr>
       <th scope="row">{{ Auth::user()->name  }}</th>
       <td>{{$reserva->casas->nombre}}</td>
-      <td>{{$reserva->fechaEntrada}}</td>
-      <td>{{$reserva->fechaSalida}}</td>
-      <td>{{$reserva->capacidad}}</td>
     </tr>
     @empty
     <h2>El usuario {{ Auth::user()->name  }} no tiene reservas en la casa -></h2>
@@ -45,9 +42,5 @@
 </table>
 </div>
  
-@if($reservas->count())
-        <div class="mt-3">
-            {{ $reservas->links() }}
-        </div>
-    @endif
+
 @endsection

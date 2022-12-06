@@ -7,14 +7,6 @@
     </div>    
 </div>
 
-<div class="row mt-4 justify-content-center">
-    <button type='button' class="btn btn-crear-casa col-lg-2 border border-transparent rounded">
-        <a class="a-crear-casa text-decoration-none h4" href="">
-            Crear Nueva Casa
-        </a>
-    </button> 
-
-
 <!-- Tabla -->
 
 <div class="row mt-4 justify-content-center">
@@ -23,17 +15,20 @@
   <thead>
     <tr>
       <th scope="col">Cliente</th>
-      <th scope="col">fechaEntrada</th>
-      <th scope="col">fechaEntrada</th>
-      <th scope="col">FechaSalida</th>
-      <th scope="col">capacidad</th>
+      <th scope="col">fecha de Entrada</th>
+      <th scope="col">Fecha de Salida</th>
+      <th scope="col">Ocupantes</th>
+      <th scope="col">Precio Total:</th>
     </tr>
   </thead>
   <tbody>
   @forelse($reservas as $reserva)
     <tr>
-      <th scope="row">{{ Auth::user()->name  }}</th>
-      <td>{{$reserva->casas->nombre}}</td>
+      <th scope="row">{{$reserva->user->name}}</th>
+      <td>{{$reserva->fechaEntrada}}</td>
+      <td>{{$reserva->fechaSalida}}</td>
+      <td>{{$reserva->capacidad}}</td>
+      <td>{{$reserva->casa->precio}}</td>
     </tr>
     @empty
     <h2>El usuario {{ Auth::user()->name  }} no tiene reservas en la casa -></h2>

@@ -20,7 +20,7 @@ class ReservasController extends Controller
 
     public function index()
     {
-        $reservas = Reservas::with("user")->paginate(10);
+        $reservas = Reservas::all();
         return view("reservas.index", compact("reservas"));
     }
 

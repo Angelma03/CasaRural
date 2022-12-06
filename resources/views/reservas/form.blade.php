@@ -14,58 +14,33 @@
             <div class="row bg-form mb-1">
                 <h3 class="text-center ">Formulario para {{$title}}</h3>
             </div>
-            <label for="nombre" class="form-label"> {{ __("Nombre") }}: </label>
-            <input name="nombre" value="{{ old('nombre') ?? $casa->nombre }}" class="form-control" id="nombre" aria-describedby="nombre">
-            <div id="nombre" class="form-text">Escribe el nombre de la casa</div>
-            @error("nombre")
+            <label for="capacidad" class="form-label"> {{ __("Numero de ocupantes") }}: </label>
+            <input type="number" name="capacidad" max="25" value="{{ old('capacidad') ?? $reserva->capacidad }}" class="form-control" id="capacidad" aria-describedby="capacidad">
+            @error("capacidad")
             <div class="border border-red-400 rounded-b bg-red-100 mt-1 px-4 py-3 text-red-700">
                 {{ $message }}
             </div>
             @enderror
 
 
-            <label for="descripcion" class="form-label">Descripción: </label>
-            <textarea name="descripcion"  class="form-control" id="descripcion" aria-describedby="descripcion">{{ old('descripcion') ?? $casa->descripcion }}</textarea>
-            <div id="descripcion"  class="form-text">Escribe la descripción de la casa</div>
-            @error("descripcion")
+            <label for="fechaEntrada" class="form-label">Fecha de entrada: </label>
+            <input  type="date" name="fechaEntrada" class="form-control" id="fechaEntrada" aria-describedby="fechaEntrada">
+            @error("fechaEntrada")
             <div class="border border-red-400 rounded-b bg-red-100 mt-1 px-4 py-3 text-red-700">
                 {{ $message }}
             </div>
             @enderror
 
 
-            <label for="direccion" class="form-label">Dirección: </label>
-            <input name="direccion" value="{{ old('direccion') ?? $casa->direccion }}" class="form-control" id="direccion" aria-describedby="direccion">
-            <div id="direccion" class="form-text">Escribe la direccion de la casa</div>
-            @error("direccion")
+            <label for="fechaSalida" class="form-label">Fecha de Salida: </label>
+            <input  type="date" name="fechaSalida" class="form-control" id="fechaSalida" aria-describedby="fechaSalida">
+            @error("fechaSalida")
             <div class="border border-red-400 rounded-b bg-red-100 mt-1 px-4 py-3 text-red-700">
                 {{ $message }}
             </div>
             @enderror
 
 
-            <label for="precio" class="form-label">Precio: </label>
-            <input name="precio" value="{{ old('precio') ?? $casa->precio }}"class="form-control" id="precio" aria-describedby="precio">
-            <div id="precio" class="form-text">Escribe el precio de casa por dia</div>
-            @error("precio")
-            <div class="border border-danger">
-                {{ $message }}
-            </div>
-            @enderror
-
-
-            
-
-            <label for="imagen" class="form-label">Imagen:</label>
-            @if (isset($casa->imagen))
-            <img src="{{asset($casa->imagen)}}" style=" max-height:100px; width: auto;">
-            @endif
-            <input class="form-control" type="file" id="imagen" name="imagen">
-            @error("imagen")
-            <div class="imagen">
-            {{ $message }}
-            </div>
-            @enderror
 
             <button class="justify-content-center m-3 bg-success" type="submit">
                 {{ $textButton }}

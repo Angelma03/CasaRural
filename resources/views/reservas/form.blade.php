@@ -15,9 +15,9 @@
             <div class="row bg-form mb-1">
                 <h3 class="text-center ">Formulario para {{$title}}</h3>
             </div>
-            <label for="ocupantes" class="form-label"> {{$reserva->casa}}: </label>
-            <input type="number" name="ocupantes" value="{{ old('capacidad') ?? $reserva->capacidad }}" class="form-control" id="capacidad" aria-describedby="capacidad">
-            @error("capacidad")
+            <label for="ocupantes" class="form-label">Escribe el numero de ocupantes: </label>
+            <input type="number" name="ocupantes" value="{{ old('ocupantes') ?? $reserva->ocupantes }}" class="form-control" id="capacidad" aria-describedby="capacidad">
+            @error("ocupantes")
             <div class="border border-red-400 rounded-b bg-red-100 mt-1 px-4 py-3 text-red-700">
                 {{ $message }}
             </div>

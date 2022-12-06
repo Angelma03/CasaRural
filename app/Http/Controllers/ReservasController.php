@@ -29,8 +29,23 @@ class ReservasController extends Controller
         $reserva = new Reservas;
         $title = __("Crear reserva");
         $textButton = __("Crear");
-        $route = route("reservas.store");
-
+        $route = route("reservas.store", ["casa" => $casa]);
         return view("reservas.create", compact("title", "textButton", "route", "reserva"));
+    } 
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            "ocupantes" => "required|max:50",
+            "fechaEntrada" => "required",
+            "fechaSalida" =>"required",
+        ]);
+        $reserva = Reservas::create(array_merge(
+            $request->only("nombre","fechaEntrada","fechaSalida"),
+            [
+                'user_id' => Auth::user()->id,
+
+            ]   
+        ));
     }
 }

@@ -18,6 +18,9 @@
         <p class="text-center"><strong>{{$casa->direccion}}</strong></p>
     </div>
     <div class="col-lg-2">
+        <p class="text-center"><strong>máximo {{$casa->capacidad}} personas</strong></p>
+    </div>
+    <div class="col-lg-2">
         <p class="text-center"><strong>{{$casa->precio}} € por dia</strong></p>
     </div>
 </div>

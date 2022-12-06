@@ -44,13 +44,14 @@ class DueñoController extends Controller
             "nombre" => "required|max:50",
             "descripcion" => "required|min:50",
             "direccion" =>"required|string|max:50",
-            "precio" => "required|integer",
+            "precio" => "required|integer|min:10",
+            "capacidad" => "required|integer|min:1",
             "imagen" => "required|image|mimes:jpg,gif,png,jpeg|"
         ]);
         $file = $request->file('imagen');
         
         $casa = Casas::create(array_merge(
-            $request->only("nombre","dueño","descripcion","direccion","precio"),
+            $request->only("nombre","dueño","descripcion","direccion","capacidad","precio"),
             [
                 "imagen" => $file->storeAs('images',
                     $file->getClientOriginalName()
@@ -83,7 +84,8 @@ class DueñoController extends Controller
             "nombre" => "required|unique:casas,nombre," . $casa->id,
             "descripcion" => "required|min:50",
             "direccion" =>"required|string|max:50",
-            "precio" => "required|int|max:1000",
+            "precio" => "required|int|max:1000|min:10",
+            "capacidad" => "required|int|min:1",
             "imagen" => "required|image|mimes:jpg,gif,png,jpeg|"
         ]);
         $casa->fill($request->only("nombre","dueño","descripcion","direccion","precio"));

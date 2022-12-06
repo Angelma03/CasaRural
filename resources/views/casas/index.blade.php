@@ -1,6 +1,10 @@
 @extends("layouts.casas")
 @section("content")
- 
+ @if (session('success'))
+    <div class="bg-danger text-center border border-danger text-success px-4 py-3 rounded relative" role="alert">
+    <p><strong class="font-bold">{{ session('success') }}</strong></p>
+    </div>
+@endif
 <!-- Cuerpo -->
 <div class="row mt-4 justify-content-center">
     <div class="col-lg-10 text-center">
@@ -28,6 +32,7 @@
       <th scope="col">Descripcion</th>
       <th scope="col">Direccion</th>
       <th scope="col">Precio</th>
+      <th scope="col">Capacidad</th>
       <th scope="col">Imagen</th>
       <th scope="col">Acciones</th>
     </tr>
@@ -39,7 +44,8 @@
       <td>{{ $casa->nombre }}</td>
       <td><?php echo substr($casa->descripcion,0,200).' ...'?></td>
       <td>{{ $casa->direccion}}</td>
-      <td>{{ $casa->precio }}</td>
+      <td>{{ $casa->precio }} €</td>
+      <td>{{ $casa->capacidad }} pers.</td>
       <td>{{ $casa->imagen }}</td>
     <td>
         <div class="row justify-content-center ">

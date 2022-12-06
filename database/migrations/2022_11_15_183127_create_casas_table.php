@@ -21,6 +21,7 @@ class CreateCasasTable extends Migration
             $table->text('descripcion');
             $table->string('direccion');
             $table->integer('precio');
+            $table->integer('capacidad');
             $table->text('imagen');
             $table->timestamps();
         });

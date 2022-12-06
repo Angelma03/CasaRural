@@ -10,7 +10,7 @@ use App\Models\Casas;
 class Reservas extends Model
 {
     use HasFactory;
-    protected $fillable=['capacidad','fechaEntrada','fechaSalida'];
+    protected $fillable=['ocupantes','fechaEntrada','fechaSalida'];
     protected static function boot(){   
         parent::boot();
         self:: creating(function($table){

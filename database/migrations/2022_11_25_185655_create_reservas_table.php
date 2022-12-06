@@ -17,7 +17,7 @@ class CreateReservasTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('casa_id')->constrained();
-            $table->integer('capacidad');
+            $table->integer('ocupantes');
             $table->date('fechaEntrada');
             $table->date('fechaSalida');
             $table->timestamps();

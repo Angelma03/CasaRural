@@ -10,7 +10,7 @@ use App\Models\Reservas;
 class Casas extends Model
 {
     use HasFactory;
-    protected $fillable=['nombre','dueño','descripcion','direccion','precio','imagen'];
+    protected $fillable=['nombre','dueño','descripcion','direccion','precio','capacidad','imagen'];
 
     protected static function boot(){   
         parent::boot();

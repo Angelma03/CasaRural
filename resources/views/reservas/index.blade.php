@@ -27,7 +27,7 @@
       <th scope="row">{{$reserva->user->name}}</th>
       <td>{{$reserva->fechaEntrada}}</td>
       <td>{{$reserva->fechaSalida}}</td>
-      <td>{{$reserva->capacidad}}</td>
+      <td>{{$reserva->ocupantes}}</td>
       <td>{{$reserva->casa->precio}}</td>
     </tr>
     @empty

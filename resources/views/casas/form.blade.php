@@ -53,6 +53,15 @@
             </div>
             @enderror
 
+            <label for="capacidad" class="form-label">Capacidad casa: </label>
+            <input name="capacidad" value="{{ old('capacidad') ?? $casa->capacidad }}"class="form-control" id="capacidad" aria-describedby="capacidad">
+            <div id="capacidad" class="form-text">Escribe la capacidad de la casa</div>
+            @error("capacidad")
+            <div class="border border-danger bg-danger text-white p-2">
+                {{ $message }}
+            </div>
+            @enderror
+
 
             
 

@@ -28,7 +28,7 @@
 
 
             <label for="fechaEntrada" class="form-label">Fecha de entrada: </label>
-            <input  type="date" name="fechaEntrada" class="form-control" id="fechaEntrada" aria-describedby="fechaEntrada">
+            <input  type="date" name="fechaEntrada" class="form-control" id="fechaEntrada" value="{{ old('fechaEntrada') ?? $reserva->fechaEntrada }}" aria-describedby="fechaEntrada">
             @error("fechaEntrada")
             <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-success">
                 {{ $message }}
@@ -37,7 +37,7 @@
 
 
             <label for="fechaSalida" class="form-label">Fecha de Salida: </label>
-            <input  type="date" name="fechaSalida" class="form-control" id="fechaSalida" aria-describedby="fechaSalida">
+            <input  type="date" name="fechaSalida" class="form-control" id="fechaSalida" value="{{ old('fechaSalida') ?? $reserva->fechaSalida }}" aria-describedby="fechaSalida">
             @error("fechaSalida")
             <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-success">
                 {{ $message }}

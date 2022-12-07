@@ -69,7 +69,7 @@ class DueñoController extends Controller
     public function edit(Casas $casa)
     {
         $update = true;
-        $title = __("Editar proyecto");
+        $title = __("Editar Casa");
         $textButton = __("Actualizar");
         $route = route("casas.update", ["casa" => $casa]);
         return view("casas.edit", compact("update", "title", "textButton", "route", "casa"));

@@ -52,4 +52,36 @@ class ReservasController extends Controller
         return redirect(route("reservas.index"))
         ->with("success", __("Reserva creada!"));
     }
+
+    public function edit(Reservas $reserva)
+    {
+        $casa = Casas::find($reserva->casa_id);
+        $update = true;
+        $title = __("Editar Reserva");
+        $textButton = __("Actualizar");
+        $route = route("reservas.update", ["reserva" => $reserva]);
+        return view("reservas.edit", compact("update", "title", "textButton", "route", "reserva","casa"));
+    }
+
+
+    public function update(Request $request, Reservas $reserva)
+    {
+
+        $this->validate($request, [
+            "ocupantes" => "required",
+            "fechaEntrada" => "required",
+            "fechaSalida" =>"required",
+        ]);
+        $reserva->fill($request->only("ocupantes","fechaEntrada","fechaSalida"));
+        $reserva->save();
+        return redirect(route("reservas.index"))
+        ->with("success", __("reserva actualizada!"));
+    }
+
+
+    public function destroy(Reservas $reserva)
+    {
+        $reserva->delete();
+        return back()->with("success", __("reserva eliminada!"));
+    }
 }

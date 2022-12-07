@@ -33,7 +33,13 @@
       <td>{{$reserva->fechaEntrada}}</td>
       <td>{{$reserva->fechaSalida}}</td>
       <td>{{$reserva->ocupantes}} personas</td>
-      <td>{{$reserva->casa->precio}} €</td>
+      <td><?php 
+        $fecha1=new DateTime($reserva->fechaEntrada);
+        $fecha2=new DateTime($reserva->fechaSalida);
+        $diff = $fecha1->diff($fecha2);
+        $precioTotal=$diff->days*$reserva->casa->precio;
+        echo $precioTotal;
+      ?> €</td>
       <td>
         <div class="row justify-content-center ">
             <button type="button" class="btn btn-warning col-lg-7">
@@ -61,6 +67,4 @@
 </table>
 </div>
 </div>
- 
-
 @endsection

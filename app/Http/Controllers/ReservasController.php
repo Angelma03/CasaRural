@@ -28,8 +28,8 @@ class ReservasController extends Controller
     {
         $casa = Casas::find($id);
         $reserva = new Reservas;
-        $title = __("Crear reserva");
-        $textButton = __("Crear");
+        $title = __("hacer reserva");
+        $textButton = __("Reservar");
         $route = route("reservas.store");
         return view("reservas.create", compact("title", "textButton", "route", "reserva","casa"));
     } 

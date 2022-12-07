@@ -11,12 +11,11 @@
         <h2>Listado de reservas  de: {{ Auth::user()->name }}</h2>
     </div>    
 </div>
-
 <!-- Tabla -->
 
 <div class="row mt-4 justify-content-center">
     <div class="col-lg-10">
-<table class="table table-bordered border-dark bg-form">
+<table class="table table-bordered border-dark bg-form table align-middle">
   <thead>
     <tr class="text-center">
       <th scope="col">Cliente</th>

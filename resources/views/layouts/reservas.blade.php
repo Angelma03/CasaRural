@@ -83,10 +83,9 @@
 
 
         @yield('content')
-        
         <footer class="d-flex flex-wrap justify-content-between align-items-center  p-3 mt-3 mb-0 border-top bg-success">
         <div class="col-md-4 d-flex align-items-center">
-            <span class="mb-3 mb-md-0 text-white">© Ángel Monjardín Antón, 2022 </span>
+            <span class="mb-3 mb-md-0 text-white ">© Ángel Monjardín Antón, 2022 </span>
         </div>
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
             <li class="p-2"><a href="/home"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-twitter" viewBox="0 0 16 16">

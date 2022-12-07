@@ -4,6 +4,7 @@
     </div>
 </div>-->
 
+
 <div class="row justify-content-center mt-4">
 <div class="col-lg-4  border border-dark">
 <form method="POST" action="{{ $route }}" enctype="multipart/form-data">
@@ -28,7 +29,7 @@
 
 
             <label for="fechaEntrada" class="form-label">Fecha de entrada: </label>
-            <input  type="date" name="fechaEntrada" class="form-control" id="fechaEntrada" value="{{ old('fechaEntrada') ?? $reserva->fechaEntrada }}" aria-describedby="fechaEntrada">
+            <input  type="date" onchange="precioTotal()" name="fechaEntrada" class="form-control" id="fechaEntrada" value="{{ old('fechaEntrada') ?? $reserva->fechaEntrada }}" aria-describedby="fechaEntrada">
             @error("fechaEntrada")
             <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-success">
                 {{ $message }}
@@ -36,15 +37,17 @@
             @enderror
 
 
-            <label for="fechaSalida" class="form-label">Fecha de Salida: </label>
-            <input  type="date" name="fechaSalida" class="form-control" id="fechaSalida" value="{{ old('fechaSalida') ?? $reserva->fechaSalida }}" aria-describedby="fechaSalida">
+            <label for="fechaSalida"  class="form-label">Fecha de Salida: </label>
+            <input  type="date" name="fechaSalida" onchange="precioTotal()" class="form-control" id="fechaSalida" value="{{ old('fechaSalida') ?? $reserva->fechaSalida }}" aria-describedby="fechaSalida">
             @error("fechaSalida")
             <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-success">
                 {{ $message }}
             </div>
             @enderror
 
-
+            <div class="mt-2 text-dark text-bold bg-total">
+                <strong><p id="precio"></p></strong>
+            </div>
 
             <button class="justify-content-center m-3 bg-success" type="submit">
                 {{ $textButton }}
@@ -52,3 +55,24 @@
 </form>
 </div>
 </div>
+<div>
+<script>
+function precioTotal() {
+    let fecha1, fecha2, dias, precio;
+    // Comparar si algún valor está vacío
+    if(fechaEntrada.value == '' || fechaSalida.value == '') {
+        dias = " ";
+    } else {
+        fecha1 = new Date(fechaEntrada.value);
+        fecha2 = new Date(fechaSalida.value);
+        precio={{$casa->precio}};
+        let difference = fecha2 - fecha1;
+        dias = difference / (1000 * 3600 * 24);
+
+    console.log(dias);
+    document.getElementById("precio").innerHTML = "El precio total por "+dias+" dias es de "+precio*dias+" €";
+}
+}
+</script>
+</div>
+

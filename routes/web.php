@@ -33,5 +33,6 @@ Route::get('/casas',[\App\Http\Controllers\DueñoController::class, 'index'])->n
 Route::resource('casas',DueñoController::class);
 
 Route::get('/reservas',[\App\Http\Controllers\ReservasController::class, 'index'])->name('reservas');
+Route::get('/reservas/create/{id}',[\App\Http\Controllers\ReservasController::class, 'create'])->name('reservascreate');
 Route::resource('reservas',ReservasController::class);
 

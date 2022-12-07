@@ -24,13 +24,14 @@ class ReservasController extends Controller
         return view("reservas.index", compact("reservas"));
     }
 
-    public function create()
+    public function create(int $id)
     {
+        $casa = Casas::find($id);
         $reserva = new Reservas;
         $title = __("Crear reserva");
         $textButton = __("Crear");
-        $route = route("reservas.store", ["casa" => $casa]);
-        return view("reservas.create", compact("title", "textButton", "route", "reserva"));
+        $route = route("reservas.store");
+        return view("reservas.create", compact("title", "textButton", "route", "reserva","casa"));
     } 
 
     public function store(Request $request)
@@ -41,11 +42,14 @@ class ReservasController extends Controller
             "fechaSalida" =>"required",
         ]);
         $reserva = Reservas::create(array_merge(
-            $request->only("nombre","fechaEntrada","fechaSalida"),
+            $request->only("ocupantes","fechaEntrada","fechaSalida"),
             [
+                'casa_id' =>($request->input("id_casa")),
                 'user_id' => Auth::user()->id,
-
+                
             ]   
         ));
+        return redirect(route("reservas.index"))
+        ->with("success", __("Reserva creada!"));
     }
 }

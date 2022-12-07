@@ -35,7 +35,7 @@
 <div class="row mt-4 align-items-center justify-content-center">
     <div class="col-lg-2">
         <button type='button' class="btn btn-primary">
-            <a class="text-decoration-none text-white h4" href="{{route('reservas.create')}}">Crear Reserva</a>
+            <a class="text-decoration-none text-white h4" href="{{ route('reservascreate',['id'=> $casa->id])}}">Crear Reserva</a>
         </button> 
     </div>
     <div class="col-lg-3">

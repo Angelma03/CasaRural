@@ -17,7 +17,6 @@ class Casas extends Model
         self:: creating(function($table){
             if(!app()->runningInConsole()){
             $table->user_id = auth()->id();
-            $table->casa_id = casas()->id();
             }
         }
          );

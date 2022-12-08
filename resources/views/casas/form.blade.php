@@ -66,10 +66,10 @@
             
 
             <label for="imagen" class="form-label">Imagen:</label>
+            <input class="form-control"  type="file" id="imagen" aria-describedby="imagen" name="imagen">
             @if (isset($casa->imagen))
-            <img src="{{asset($casa->imagen)}}" style=" max-height:100px; width: auto;">
+            <img src="asset($casa->imagen)}}"  style=" max-height:100px; width: auto;">
             @endif
-            <input class="form-control" type="file" id="imagen" name="imagen">
             @error("imagen")
             <div class="border border-danger bg-danger text-white p-2">
             {{ $message }}

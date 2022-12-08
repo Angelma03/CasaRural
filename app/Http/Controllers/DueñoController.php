@@ -23,7 +23,7 @@ class DueñoController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $casas = Casas::with("user")->paginate(10);
+        $casas = $user->casas()->paginate(10);
 
         return view("casas.index", compact("casas"));
     }
@@ -41,7 +41,7 @@ class DueñoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "nombre" => "required|max:50",
+            "nombre" => "required|max:50|unique:casas,nombre," . $request->id,
             "descripcion" => "required|min:50",
             "direccion" =>"required|string|max:50",
             "precio" => "required|integer|min:10",
@@ -49,12 +49,12 @@ class DueñoController extends Controller
             "imagen" => "required|image|mimes:jpg,gif,png,jpeg|"
         ]);
         $file = $request->file('imagen');
-        
         $casa = Casas::create(array_merge(
             $request->only("nombre","dueño","descripcion","direccion","capacidad","precio"),
             [
-                "imagen" => $file->storeAs('images',
-                    $file->getClientOriginalName()
+                "imagen" => $file->storeAs(
+                    'images',
+                    uniqid()."-".$file->getClientOriginalName()
 
                 ),
                 'user_id' => Auth::user()->id,
@@ -81,7 +81,7 @@ class DueñoController extends Controller
     {
 
         $this->validate($request, [
-            "nombre" => "required|unique:casas,nombre," . $casa->id,
+            "nombre" => "required",
             "descripcion" => "required|min:50",
             "direccion" =>"required|string|max:50",
             "precio" => "required|int|max:1000|min:10",

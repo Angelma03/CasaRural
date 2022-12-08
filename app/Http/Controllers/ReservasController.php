@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservas;
 use App\Models\Casas;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
@@ -20,7 +21,9 @@ class ReservasController extends Controller
 
     public function index()
     {
-        $reservas = Reservas::all();
+        $user = Auth::user();
+            $reservas = Reservas::with("user")->paginate(10);
+            $reservas = $user->reservas()->paginate(10);
         return view("reservas.index", compact("reservas"));
     }
 

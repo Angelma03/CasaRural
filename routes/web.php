@@ -30,7 +30,7 @@ Route::get('/listadocasas', [\App\Http\Controllers\ListadoCasasController::class
 Route::get('/listadocasas/{id}', [\App\Http\Controllers\ListadoCasasController::class, 'show'])->name('show');
 
 Route::get('/casas',[\App\Http\Controllers\DueñoController::class, 'index'])->name('casas');
-Route::resource('casas',DueñoController::class);
+Route::resource('casas',DueñoController::class)->middleware('can:casas');
 
 Route::get('/reservas',[\App\Http\Controllers\ReservasController::class, 'index'])->name('reservas');
 Route::get('/reservas/create/{id}',[\App\Http\Controllers\ReservasController::class, 'create'])->name('reservascreate');

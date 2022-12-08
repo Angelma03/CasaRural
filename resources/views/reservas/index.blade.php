@@ -19,6 +19,7 @@
   <thead>
     <tr class="text-center">
       <th scope="col">Cliente</th>
+      <th scope="col">Casa</th>
       <th scope="col">fecha de Entrada</th>
       <th scope="col">Fecha de Salida</th>
       <th scope="col">Ocupantes</th>
@@ -30,6 +31,7 @@
   @forelse($reservas as $reserva)
     <tr class="text-center">
       <th scope="row">{{$reserva->user->name}}</th>
+      <td>{{$reserva->casa->nombre}}</td>
       <td>{{$reserva->fechaEntrada}}</td>
       <td>{{$reserva->fechaSalida}}</td>
       <td>{{$reserva->ocupantes}} personas</td>
@@ -60,8 +62,9 @@
         </form>
     </td>
     </tr>
+
     @empty
-    <h2>El usuario {{ Auth::user()->name  }} no tiene reservas en la casa -></h2>
+    <h2 class="text-center">El usuario {{ Auth::user()->name  }} no tiene reservas</h2>
     @endforelse
   </tbody>
 </table>

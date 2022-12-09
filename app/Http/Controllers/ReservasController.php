@@ -7,6 +7,7 @@ use App\Models\Casas;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Unique;
@@ -22,8 +23,21 @@ class ReservasController extends Controller
     public function index()
     {
         $user = Auth::user();
-            $reservas = Reservas::with("user")->paginate(10);
-            $reservas = $user->reservas()->paginate(10);
+        $reservas=Reservas::all();
+       
+        foreach ($user->roles as $rol) {
+            foreach($reservas as $reserva){
+             if($rol->name=='Dueño' && $reserva->casa->dueño==$user->name){
+                
+                $reservas = $user->reservas()->
+                join('casas', 'reservas.casa_id', '=', 'casas.id')->
+                where('casas.dueño','=',  $user->name)->paginate(10);
+               
+             }else{
+                $reservas = $user->reservas()->paginate(10);
+             }
+            }
+        }
         return view("reservas.index", compact("reservas"));
     }
 
@@ -85,6 +99,7 @@ class ReservasController extends Controller
     public function destroy(Reservas $reserva)
     {
         $reserva->delete();
-        return back()->with("success", __("reserva eliminada!"));
+        return redirect(route("reservas.index"))
+        ->with("success", __("reserva eliminada!"));
     }
 }

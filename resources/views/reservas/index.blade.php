@@ -44,12 +44,12 @@
       ?> €</td>
       <td>
         <div class="row justify-content-center ">
-            <button type="button" class="btn btn-warning col-lg-7">
+            <button type="button" class="btn btn-warning col-lg-10">
                 <a class="text-dark text-decoration-none " href="{{route('reservas.edit',['reserva' => $reserva]) }}">Editar</a>
             </button>
         </div>
         <div class="row justify-content-center mt-2">
-            <button type="button" class="btn btn-danger col-lg-7">
+            <button type="button" class="btn btn-danger col-lg-10">
                 <a href="#" onclick="event.preventDefault();
                 document.getElementById('delete-casa-{{ $reserva->id }}-form').submit();" class="text-white text-decoration-none">
                 Eliminar

@@ -86,7 +86,7 @@ class ReservasController extends Controller
 
         $this->validate($request, [
             "ocupantes" => "required",
-            "fechaEntrada" => "required|date|unique:$reserva->fechaEntrada",
+            "fechaEntrada" => "required|date",
             "fechaSalida" =>"required|date|after_or_equal:fechaEntrada",
         ]);
         $reserva->fill($request->only("ocupantes","fechaEntrada","fechaSalida"));

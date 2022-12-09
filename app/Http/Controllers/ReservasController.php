@@ -24,20 +24,20 @@ class ReservasController extends Controller
     {
         $user = Auth::user();
         $reservas=Reservas::all();
-       
         foreach ($user->roles as $rol) {
             foreach($reservas as $reserva){
              if($rol->name=='Dueño' && $reserva->casa->dueño==$user->name){
+                $reservas =  Reservas::where('user_id','=',Auth::user()->id)->
+                OrwhereHas('casa' ,function($q){
+                $q->where('dueño','=',Auth::user()->name);})
+                ->get();
                 
-                $reservas = $user->reservas()->
-                join('casas', 'reservas.casa_id', '=', 'casas.id')->
-                where('casas.dueño','=',  $user->name)->paginate(10);
-               
              }else{
                 $reservas = $user->reservas()->paginate(10);
+
              }
             }
-        }
+    }
         return view("reservas.index", compact("reservas"));
     }
 

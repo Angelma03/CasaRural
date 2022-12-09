@@ -29,7 +29,7 @@
 
 
             <label for="fechaEntrada" class="form-label">Fecha de entrada: </label>
-            <input  type="date" onchange="precioTotal()" name="fechaEntrada" class="form-control" id="fechaEntrada" value="{{ old('fechaEntrada') ?? $reserva->fechaEntrada }}" aria-describedby="fechaEntrada">
+            <input  type="date" onchange="precioTotal()" required min=<?php $hoy=date("Y-m-d"); echo $hoy;?> name="fechaEntrada" class="form-control" id="fechaEntrada" value="{{ old('fechaEntrada') ?? $reserva->fechaEntrada }}" aria-describedby="fechaEntrada">
             @error("fechaEntrada")
             <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-success">
                 {{ $message }}
@@ -38,7 +38,7 @@
 
 
             <label for="fechaSalida"  class="form-label">Fecha de Salida: </label>
-            <input  type="date" name="fechaSalida" onchange="precioTotal()" class="form-control" id="fechaSalida" value="{{ old('fechaSalida') ?? $reserva->fechaSalida }}" aria-describedby="fechaSalida">
+            <input  type="date" name="fechaSalida" onchange="precioTotal()" class="form-control" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> id="fechaSalida" value="{{ old('fechaSalida') ?? $reserva->fechaSalida }}" aria-describedby="fechaSalida">
             @error("fechaSalida")
             <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-success">
                 {{ $message }}
@@ -73,6 +73,17 @@ function precioTotal() {
     document.getElementById("precio").innerHTML = "El precio total por "+dias+" dias es de "+precio*dias+" €";
 }
 }
+$(function () {
+    $("#fechaSalida").datepicker({
+        changeMonth : true,
+        changeYear : true,
+        autoclose: true,
+        firstDay : 1,
+        format: "dd/mm/yyyy",
+        language: "es",
+        datesDisabled: "11/12/2022",
+    });
+});
 </script>
 </div>
 

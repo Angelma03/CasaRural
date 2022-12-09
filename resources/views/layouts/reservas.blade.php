@@ -44,9 +44,11 @@
                             </svg> {{ Auth::user()->name }}</span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        @can('casas')
                             <li>
                                 <a class="dropdown-item" href="/casas">Gestion Casas</a>
                             </li>
+                        @endcan
                             <li>
                                 <a class="dropdown-item" href="{{ route('reservas.index')}}">Gestion Reservas</a>
                             </li>

@@ -55,8 +55,8 @@ class ReservasController extends Controller
     {
         $this->validate($request, [
             "ocupantes" => "required|max:50",
-            "fechaEntrada" => "required",
-            "fechaSalida" =>"required",
+            "fechaEntrada" => "required|date",
+            "fechaSalida" =>"required|date|after_or_equal:fechaEntrada",
         ]);
         $reserva = Reservas::create(array_merge(
             $request->only("ocupantes","fechaEntrada","fechaSalida"),
@@ -86,8 +86,8 @@ class ReservasController extends Controller
 
         $this->validate($request, [
             "ocupantes" => "required",
-            "fechaEntrada" => "required",
-            "fechaSalida" =>"required",
+            "fechaEntrada" => "required|date|unique:$reserva->fechaEntrada",
+            "fechaSalida" =>"required|date|after_or_equal:fechaEntrada",
         ]);
         $reserva->fill($request->only("ocupantes","fechaEntrada","fechaSalida"));
         $reserva->save();

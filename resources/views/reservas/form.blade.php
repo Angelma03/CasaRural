@@ -50,7 +50,7 @@
             </div>
 
             <button class="justify-content-center m-3 p-2 bg-success" type="submit">
-                {{ $textButton }}
+                <strong>{{ $textButton }}</strong>
             </button>
 </form>
 </div>

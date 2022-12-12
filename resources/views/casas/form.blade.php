@@ -12,7 +12,7 @@
         @method("PUT")
     @endisset
             <div class="row bg-form mb-1">
-                <h3 class="text-center ">Formulario para {{$title}}</h3>
+                <h3 class="text-center h3 ">Formulario para {{$title}}</h3>
             </div>
             <label for="nombre" class="form-label"> {{ __("Nombre") }}: </label>
             <input name="nombre" value="{{ old('nombre') ?? $casa->nombre }}" class="form-control" id="nombre" aria-describedby="nombre">
@@ -68,7 +68,7 @@
             <label for="imagen" class="form-label">Imagen:</label>
             <input class="form-control"  type="file" id="imagen" aria-describedby="imagen" name="imagen">
             @if (isset($casa->imagen))
-            <img src="asset($casa->imagen)}}"  style=" max-height:100px; width: auto;">
+                <img src="{{asset($casa->imagen)}}" style=" max-height:100px; width: auto;">
             @endif
             @error("imagen")
             <div class="border border-danger bg-danger text-white p-2">
@@ -76,7 +76,7 @@
             </div>
             @enderror
 
-            <button class="justify-content-center m-3 bg-success" type="submit">
+            <button class="justify-content-center m-3 p-2 bg-success" type="submit">
                 {{ $textButton }}
             </button>
 </form>

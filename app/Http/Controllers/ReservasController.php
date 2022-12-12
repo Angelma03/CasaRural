@@ -74,7 +74,7 @@ class ReservasController extends Controller
     {
         $casa = Casas::find($reserva->casa_id);
         $update = true;
-        $title = __("Editar Reserva");
+        $title = __("editar Reserva");
         $textButton = __("Actualizar");
         $route = route("reservas.update", ["reserva" => $reserva]);
         return view("reservas.edit", compact("update", "title", "textButton", "route", "reserva","casa"));
@@ -87,7 +87,7 @@ class ReservasController extends Controller
         $this->validate($request, [
             "ocupantes" => "required",
             "fechaEntrada" => "required|date",
-            "fechaSalida" =>"required|date|after_or_equal:fechaEntrada",
+            "fechaSalida" =>"required|date|after:fechaEntrada",
         ]);
         $reserva->fill($request->only("ocupantes","fechaEntrada","fechaSalida"));
         $reserva->save();

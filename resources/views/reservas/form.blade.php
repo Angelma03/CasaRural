@@ -17,7 +17,7 @@
             <input type="text" name="id_casa" value="{{$casa->id}}" class="form-control" id="id_casa" hidden>
 
             <div class="row bg-form mb-1">
-                <h3 class="text-center ">Formulario para {{$title}}</h3>
+                <h3 class="text-center h3 ">Formulario para {{$title}}</h3>
             </div>
             <label for="ocupantes" class="form-label">Escribe el numero de ocupantes: </label>
             <input type="number" name="ocupantes" max="{{$casa->capacidad}}" min="1" value="{{ old('ocupantes') ?? $reserva->ocupantes }}" class="form-control" id="capacidad" aria-describedby="capacidad">
@@ -49,7 +49,7 @@
                 <strong><p id="precio"></p></strong>
             </div>
 
-            <button class="justify-content-center m-3 bg-success" type="submit">
+            <button class="justify-content-center m-3 p-2 bg-success" type="submit">
                 {{ $textButton }}
             </button>
 </form>

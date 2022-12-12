@@ -15,6 +15,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<link href="{{ mix('css/app.css') }}" rel="stylesheet">
 <link href="/css/estilos.css" rel="stylesheet">
 </head>
 <body>
@@ -23,7 +24,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-success">
     <div class="container-fluid">
             <div class="navbar-header">
-            <img src="/images/logo.jpg" alt="Responsive image"  height="50px">
+            <img src="/images/logo.jpg" alt="Responsive image">
         </div>
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
@@ -72,7 +73,7 @@
                     </li>
                     @if (Route::has('register'))
                         <li class ="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 1 16 16">
+                            <a class="nav-link" href="{{ route('register') }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 1 16 16">
   <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
 </svg> Registrarse</a>
                         </li>
@@ -85,17 +86,20 @@
 <!-- Cuerpo -->
     <div class="row mb-5 mt-5">
         <div class=col-lg-5>
-            <h1 class="text-center">Casa Rural</h1>
-            <p class="h4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-            Adipisci fugiat, vel libero voluptates reprehenderit necessitatibus sequi architecto ad 
-            ut consectetur quaerat. Minus in ea tempore cupiditate consequatur? Perspiciatis, at dignissimos.</p>
+            <h1 class="text-center h1">AM casas</h1>
+            <p class="h4">AM casas es una plataforma de búsqueda y reserva de casas rurales vacacionales 
+                que te permite encontrar tu alojamiento perfecto y 
+                reservar al precio más bajo.</p>
             </br>
-            <p class="h4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-            Adipisci fugiat, vel libero voluptates reprehenderit necessitatibus sequi architecto ad 
-            ut consectetur quaerat. Minus in ea tempore cupiditate consequatur? Perspiciatis, at dignissimos.</p>
+            <p class="h4">Colaboramos con grandes agencias de viajes online, 
+                oficinas de turismo regionales y especialistas locales para 
+                ofrecerte una gran selección de casas rurales para que encuentres 
+                el alquiler perfecto para tus vacaciones y contamos con mas de 10 años de experiencia
+                en el sector</p>
         </div>
         <div class=col-lg-7>
-            <img src="images/empresa.jpg" class="img-fluid" width="850px" alt="Empresa">
+            <img src="images/empresa.jpg" class="img-fluid"  alt="Empresa">
+            <div id="empresa" class="form-text">Nuestras oficinas en Calle Uria,Oviedo</div>
         </div>
     </div>
     <div class="row mb-5">
@@ -106,15 +110,15 @@
                     <button type="button" data-bs-target="#casasRurales" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#casasRurales" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
-            <div class="carousel-inner">
+            <div class="carousel-inner" style="height:600px">
                 <div class="carousel-item active">
-                    <img src="images/empresa.jpg" class="d-block w-100" alt="Casa1">
+                    <img src="images/casa1.jpg"   class="d-block w-100"  alt="Casa1">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/empresa.jpg" class="d-block w-100" alt="Casa2">
+                    <img src="images/casa2.jpg" class="d-block w-100"alt="Casa2">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/empresa.jpg" class="d-block w-100" alt="Casa3">
+                    <img src="images/casa3.jpg" class="d-block w-100" alt="Casa3">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#casasRurales" data-bs-slide="prev">

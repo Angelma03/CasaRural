@@ -31,7 +31,7 @@ class DueñoController extends Controller
     public function create()
     {
         $casa = new Casas;
-        $title = __("Crear casa");
+        $title = __("crear casa");
         $textButton = __("Crear");
         $route = route("casas.store");
 
@@ -69,7 +69,7 @@ class DueñoController extends Controller
     public function edit(Casas $casa)
     {
         $update = true;
-        $title = __("Editar Casa");
+        $title = __("editar Casa");
         $textButton = __("Actualizar");
         $route = route("casas.update", ["casa" => $casa]);
         return view("casas.edit", compact("update", "title", "textButton", "route", "casa"));

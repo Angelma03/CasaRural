@@ -4,7 +4,7 @@
 <div class="row mt-4 justify-content-center">
 <div class="col-lg-4 border border-dark">
 <div class="row text-center bg-primary">
-        <h1>Registrarse</h1>
+        <h1 class="h1">Registrarse</h1>
     </div>
 <form method="POST" action="{{ route('register') }}">
 @csrf
@@ -49,10 +49,14 @@
     <select class="form-select mt-4" type="select" name="roles" id="roles" aria-label="rol">
     <option selected disabled>Elige un Rol para tu usuario</option>
         @forelse($roles as $id=>$rol)
-
-        <option>{{$rol}}</option>
+            <option>{{$rol}}</option>
         @empty
         @endforelse
+    @error('roles')
+    <div class="border border-danger bg-danger text-white p-2">
+        {{ $message }}
+    </div>
+    @enderror
   
     </select>
 

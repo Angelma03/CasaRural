@@ -8,7 +8,7 @@
 <form method="POST" action="{{ route('login') }}" enctype="multipart/form-data">
 @csrf
     <div class="row text-center bg-primary">
-        <h1>Iniciar Sesion</h1>
+        <h1 class="h1">Iniciar Sesion</h1>
     </div>
         <label for="email" class="form-label mt-2">{{ __('Correo Electronico') }}:</label>
         <input id="email" type="email" class="form-control" name="email"

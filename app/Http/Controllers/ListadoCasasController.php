@@ -15,7 +15,7 @@ class listadoCasasController extends Controller
 
     public function index()
     {
-        $casas=Casas::all();
+        $casas=Casas::paginate(4);
         return view('listadocasas', compact('casas'));
     }
 

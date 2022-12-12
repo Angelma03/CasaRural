@@ -21,6 +21,11 @@ class Userseeder extends Seeder
             'email_verified_at'=>now(),
             'password'=>Hash::make('admin'),
         ])->assignRole('Dueño');
-        \App\Models\User::factory(3)->create();
+        User::create([
+            'name'=>'cliente',
+            'email'=>'cliente@hotmail.com',
+            'email_verified_at'=>now(),
+            'password'=>Hash::make('cliente'),
+        ])->assignRole('Cliente');
     }
 }

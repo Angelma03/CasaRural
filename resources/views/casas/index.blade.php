@@ -8,7 +8,7 @@
 <!-- Cuerpo -->
 <div class="row mt-4 justify-content-center">
     <div class="col-lg-10 text-center">
-        <h2>Listado casas de: {{ Auth::user()->name }}</h2>
+        <h2 class="h2">Listado casas de: {{ Auth::user()->name }}</h2>
     </div>    
 </div>
 
@@ -68,6 +68,7 @@
     </td>
     </tr>
     @empty
+    <h1 class="text-center h1">No dispones de casas creadas</h1>
     @endforelse
   </tbody>
 </table>
@@ -76,8 +77,7 @@
 @if($casas->count())
         <div class="mt-3">
             {{ $casas->links() }}
-           
         </div>
-    @endif
+@endif
 
 @endsection

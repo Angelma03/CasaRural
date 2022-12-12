@@ -8,7 +8,7 @@
 <!-- Cuerpo -->
 <div class="row mt-4 justify-content-center">
     <div class="col-lg-10 text-center">
-        <h2>Listado de reservas  de: {{ Auth::user()->name }}</h2>
+        <h2 class="h2">Listado de reservas  de: {{ Auth::user()->name }}</h2>
     </div>    
 </div>
 <!-- Tabla -->
@@ -64,10 +64,15 @@
     </tr>
 
     @empty
-    <h2 class="text-center">El usuario {{ Auth::user()->name  }} no tiene reservas</h2>
+    <h2 class="h2 text-center">El usuario {{ Auth::user()->name  }} no tiene reservas</h2>
     @endforelse
   </tbody>
 </table>
 </div>
 </div>
+@if($reservas->count())
+<div class="mt-3">
+  {{ $reservas->links() }}
+</div>
+@endif
 @endsection

@@ -60,12 +60,13 @@
             @method("DELETE")
             @csrf
         </form>
+   
     </td>
     </tr>
-
     @empty
     <h2 class="h2 text-center">El usuario {{ Auth::user()->name  }} no tiene reservas</h2>
     @endforelse
+  
   </tbody>
 </table>
 </div>
@@ -75,4 +76,5 @@
   {{ $reservas->links() }}
 </div>
 @endif
+
 @endsection

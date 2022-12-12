@@ -30,7 +30,7 @@ class ReservasController extends Controller
                 $reservas =  Reservas::where('user_id','=',Auth::user()->id)->
                 OrwhereHas('casa' ,function($q){
                 $q->where('dueño','=',Auth::user()->name);})
-                ->get();
+                ->paginate(10);
                 
              }else{
                 $reservas = $user->reservas()->paginate(10);

@@ -9,7 +9,7 @@
 
 <div class="row mt-4 justify-content-center">
     <div class="col-lg-10">
-        <h1 class="text-center">{{$casa->nombre}}</h1>
+        <h1 class="text-center h1">{{$casa->nombre}}</h1>
     </div>
 </div>
 

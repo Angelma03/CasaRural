@@ -3,7 +3,7 @@
 @section("content")
 <div class="row mt-4  justify-content-center">
     <div class="col-lg-10">
-        <img src="/{{$casa->imagen}}" class="img-fluid" alt="Responsive image">
+        <img src="/{{$casa->imagen}}" class="img-fluid w-100" alt="Responsive image">
     </div>
 </div>
 

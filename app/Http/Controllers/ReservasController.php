@@ -53,11 +53,20 @@ class ReservasController extends Controller
 
     public function store(Request $request)
     {
+        $messages= [
+            'ocupantes.required'=> 'El campo ocupantes es requerido',
+            'ocupantes.integer'=> 'El campo ocupantes debe ser un numero',
+            'fechaEntrada.required'=> 'El campo fecha de entrada es requerido',
+            'fechaEntrada.date'=> 'El campo fecha de entrada debe tener una fecha correcta',
+            'fechaSalida.required'=> 'El campo fecha de salida es requerido',
+            'fechaSalida.date'=> 'El campo fecha de salida deber tener una fecha correcta',
+            'fechaSalida.after_or_equal'=> 'El campo fecha salida deber ser posterior a la de entrada',
+        ];
         $this->validate($request, [
-            "ocupantes" => "required|max:50",
+            "ocupantes" => "required|integer",
             "fechaEntrada" => "required|date",
             "fechaSalida" =>"required|date|after_or_equal:fechaEntrada",
-        ]);
+        ],$messages);
         $reserva = Reservas::create(array_merge(
             $request->only("ocupantes","fechaEntrada","fechaSalida"),
             [
@@ -84,11 +93,20 @@ class ReservasController extends Controller
     public function update(Request $request, Reservas $reserva)
     {
 
+        $messages= [
+            'ocupantes.required'=> 'El campo ocupantes es requerido',
+            'ocupantes.integer'=> 'El campo ocupantes debe ser un numero',
+            'fechaEntrada.required'=> 'El campo fecha de entrada es requerido',
+            'fechaEntrada.date'=> 'El campo fecha de entrada debe tener una fecha correcta',
+            'fechaSalida.required'=> 'El campo fecha de salida es requerido',
+            'fechaSalida.date'=> 'El campo fecha de salida deber tener una fecha correcta',
+            'fechaSalida.after_or_equal'=> 'El campo fecha salida deber ser posterior a la de entrada',
+        ];
         $this->validate($request, [
-            "ocupantes" => "required",
+            "ocupantes" => "required|integer",
             "fechaEntrada" => "required|date",
-            "fechaSalida" =>"required|date|after:fechaEntrada",
-        ]);
+            "fechaSalida" =>"required|date|after_or_equal:fechaEntrada",
+        ],$messages);
         $reserva->fill($request->only("ocupantes","fechaEntrada","fechaSalida"));
         $reserva->save();
         return redirect(route("reservas.index"))

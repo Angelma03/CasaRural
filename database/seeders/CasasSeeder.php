@@ -14,7 +14,7 @@ class CasasSeeder extends Seeder
     public function run()
     {
         DB::table('casas')->insert([
-            'user_id'=>\App\Models\User::all()->random()->id,
+            'user_id'=>\App\Models\User::all()->id='1',
             'nombre'=> 'Mirador de Bendones',
             'dueño'=> 'admin',
             'descripcion'=>'El Mirador de Bendones se encuentra a 6 km de la plaza de la Constitución y ofrece alojamiento con salón compartido, jardín y servicio de habitaciones. La casa rural ofrece WiFi y aparcamiento privado gratuitos.
@@ -30,7 +30,7 @@ class CasasSeeder extends Seeder
         ]);
 
         DB::table('casas')->insert([
-            'user_id'=>\App\Models\User::all()->random()->id,
+            'user_id'=>\App\Models\User::all()->id='1',
             'nombre'=> 'Casa Pepín',
             'dueño'=> 'admin',
             'descripcion'=>'La Casa Pepín - Sagasta Rural Oviedo ofrece vistas a la ciudad y alojamiento con jardín y balcón a unos 8,2 km de la plaza de la Constitución. Esta casa rural ofrece aparcamiento privado gratuito y se encuentra en una zona ideal para practicar esquí, ciclismo y dardos.
@@ -44,7 +44,7 @@ class CasasSeeder extends Seeder
         ]);
         
         DB::table('casas')->insert([
-            'user_id'=>\App\Models\User::all()->random()->id,
+            'user_id'=>\App\Models\User::all()->id='1',
             'nombre'=> 'LOFT Y CASA',
             'dueño'=> 'admin',
             'descripcion'=>'El LOFT Y CASA habitaciones en Gijon se encuentra en Gijón, a solo 5 km del acuario de Gijón, y ofrece acceso a salón compartido, jardín y cocina compartida. Esta casa rural ofrece aparcamiento privado gratuito y servicio de habitaciones.
@@ -58,7 +58,7 @@ class CasasSeeder extends Seeder
         ]);
 
         DB::table('casas')->insert([
-            'user_id'=>\App\Models\User::all()->random()->id,
+            'user_id'=>\App\Models\User::all()->id='1',
             'nombre'=> 'El Verderín de Onón',
             'dueño'=> 'admin',
             'descripcion'=>'El Verderín de Onón es un alojamiento con vistas a la montaña situado en Gijón, a 49 km de la plaza de España y a 18 km del Museo del Jurásico de Asturias. Esta casa rural cuenta con jardín, zona de barbacoa, WiFi gratuita y aparcamiento privado gratuito.
@@ -71,7 +71,7 @@ class CasasSeeder extends Seeder
         ]);
 
         DB::table('casas')->insert([
-            'user_id'=>\App\Models\User::all()->random()->id,
+            'user_id'=>\App\Models\User::all()->id='1',
             'nombre'=> 'Casa de vacaciones',
             'dueño'=> 'admin',
             'descripcion'=>'Entonces esta hermosa casa de vacaciones en Sevares / Piloña es ideal. Tiene un fantástico jardín con árboles frutales, terraza y barbacoa. En un salón amplio y luminoso de 100 m², hay 4 dormitorios y 2 baños, que ofrecen suficiente espacio para hasta 8 personas. La casa amueblada con gusto y estilo rústico está equipada con calefacción central y una estufa y por lo tanto también es adecuada para una estancia acogedora en invierno.

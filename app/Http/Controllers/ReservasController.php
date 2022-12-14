@@ -42,17 +42,18 @@ class ReservasController extends Controller
     }
 
     public function create(int $id)
-    {
+    {   
         $casa = Casas::find($id);
+        $fechasEntrada = Reservas::all()->where('casa_id','=',$id)->pluck('fechaEntrada');
+        $fechasSalida = Reservas::all()->where('casa_id','=',$id)->pluck('fechaSalida');
         $reserva = new Reservas;
         $title = __("hacer reserva");
         $textButton = __("Reservar");
         $route = route("reservas.store");
-        return view("reservas.create", compact("title", "textButton", "route", "reserva","casa"));
+        return view("reservas.create", compact("title", "textButton", "route", "reserva","casa","fechasEntrada","fechasSalida"));
     } 
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $messages= [
             'ocupantes.required'=> 'El campo ocupantes es requerido',
             'ocupantes.integer'=> 'El campo ocupantes debe ser un numero',
@@ -60,12 +61,13 @@ class ReservasController extends Controller
             'fechaEntrada.date'=> 'El campo fecha de entrada debe tener una fecha correcta',
             'fechaSalida.required'=> 'El campo fecha de salida es requerido',
             'fechaSalida.date'=> 'El campo fecha de salida deber tener una fecha correcta',
-            'fechaSalida.after_or_equal'=> 'El campo fecha salida deber ser posterior a la de entrada',
+            'fechaSalida.after'=> 'El campo fecha salida deber ser posterior a la de entrada'
         ];
+       
         $this->validate($request, [
             "ocupantes" => "required|integer",
             "fechaEntrada" => "required|date",
-            "fechaSalida" =>"required|date|after_or_equal:fechaEntrada",
+            "fechaSalida" =>"required|date|after:fechaEntrada"
         ],$messages);
         $reserva = Reservas::create(array_merge(
             $request->only("ocupantes","fechaEntrada","fechaSalida"),
@@ -81,12 +83,15 @@ class ReservasController extends Controller
 
     public function edit(Reservas $reserva)
     {
+       
         $casa = Casas::find($reserva->casa_id);
+        $fechasEntrada = Reservas::all()->where('casa_id','=',$casa->id)->pluck('fechaEntrada');
+        $fechasSalida = Reservas::all()->where('casa_id','=',$casa->id)->pluck('fechaSalida');
         $update = true;
-        $title = __("editar Reserva");
+        $title = __("editar reserva");
         $textButton = __("Actualizar");
         $route = route("reservas.update", ["reserva" => $reserva]);
-        return view("reservas.edit", compact("update", "title", "textButton", "route", "reserva","casa"));
+        return view("reservas.edit", compact("update", "title", "textButton", "route", "reserva","casa","fechasEntrada","fechasSalida"));
     }
 
 
@@ -100,12 +105,12 @@ class ReservasController extends Controller
             'fechaEntrada.date'=> 'El campo fecha de entrada debe tener una fecha correcta',
             'fechaSalida.required'=> 'El campo fecha de salida es requerido',
             'fechaSalida.date'=> 'El campo fecha de salida deber tener una fecha correcta',
-            'fechaSalida.after_or_equal'=> 'El campo fecha salida deber ser posterior a la de entrada',
+            'fechaSalida.after'=> 'El campo fecha salida deber ser posterior a la de entrada',
         ];
         $this->validate($request, [
             "ocupantes" => "required|integer",
             "fechaEntrada" => "required|date",
-            "fechaSalida" =>"required|date|after_or_equal:fechaEntrada",
+            "fechaSalida" =>"required|date|after:fechaEntrada",
         ],$messages);
         $reserva->fill($request->only("ocupantes","fechaEntrada","fechaSalida"));
         $reserva->save();

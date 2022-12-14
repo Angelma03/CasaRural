@@ -12,8 +12,6 @@
     @isset($update)
         @method("PUT")
     @endisset
-        
-            
             <input type="text" name="id_casa" value="{{$casa->id}}" class="form-control" id="id_casa" hidden>
 
             <div class="row bg-form mb-1">
@@ -28,8 +26,15 @@
             @enderror
 
 
-            <label for="fechaEntrada" class="form-label">Fecha de entrada: </label>
-            <input  type="date" onchange="precioTotal()" required min=<?php $hoy=date("Y-m-d"); echo $hoy;?> name="fechaEntrada" class="form-control" id="fechaEntrada" value="{{ old('fechaEntrada') ?? $reserva->fechaEntrada }}" aria-describedby="fechaEntrada">
+                <label for="fechaEntrada" class="mt-2 col-form-label">Fecha de entrada:</label>
+                <div class="input-group date" id="datepicker">
+                    <span class="input-group-append">
+                            <span class="input-group-text bg-white">
+                            <i class='fa fa-calendar' style='font-size:24px'></i>
+                            </span>
+                        </span>
+                     <input type="text" class="form-control" name="fechaEntrada" id="fechaEntrada" value="{{ old('fechaEntrada') ?? $reserva->fechaEntrada }}">
+                </div>
             @error("fechaEntrada")
             <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-success">
                 {{ $message }}
@@ -37,14 +42,20 @@
             @enderror
 
 
-            <label for="fechaSalida"  class="form-label">Fecha de Salida: </label>
-            <input  type="date" name="fechaSalida" onchange="precioTotal()" class="form-control" min=<?php $hoy=date("Y-m-d"); echo $hoy;?> id="fechaSalida" value="{{ old('fechaSalida') ?? $reserva->fechaSalida }}" aria-describedby="fechaSalida">
+            <label for="fechaSalida" class="mt-2 col-form-label">Fecha de Salida:</label>
+                <div class="input-group date" id="datepicker1">
+                    <span class="input-group-append">
+                            <span class="input-group-text bg-white">
+                            <i class='fa fa-calendar' style='font-size:24px'></i>
+                            </span>
+                        </span>
+                     <input type="text" class="form-control" name="fechaSalida" id="fechaSalida" value="{{ old('fechaSalida') ?? $reserva->fechaSalida }}">
+                </div>
             @error("fechaSalida")
             <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-success">
                 {{ $message }}
             </div>
             @enderror
-
             <div class="mt-2 text-dark text-bold bg-total">
                 <strong><p id="precio"></p></strong>
             </div>
@@ -52,6 +63,7 @@
             <button class="justify-content-center m-3 p-2 bg-success" type="submit">
                 <strong>{{ $textButton }}</strong>
             </button>
+         
 </form>
 </div>
 </div>
@@ -73,17 +85,73 @@ function precioTotal() {
     document.getElementById("precio").innerHTML = "El precio total por "+dias+" dias es de "+precio*dias+" €";
 }
 }
-$(function () {
-    $("#fechaSalida").datepicker({
-        changeMonth : true,
-        changeYear : true,
-        autoclose: true,
-        firstDay : 1,
-        format: "dd/mm/yyyy",
-        language: "es",
-        datesDisabled: "11/12/2022",
-    });
-});
+</script>
+<script type="text/javascript">
+  var diasEntreFechas = function(fechasEntrada, fechasSalida) {
+  	var dia_actual = fechasEntrada;
+    var fechasmedio = [];
+  	while (dia_actual.isSameOrBefore(fechasSalida)) {
+    	fechasmedio.push(dia_actual.format('YYYY-MM-DD'));
+   		dia_actual.add(1, 'days');
+  	}
+  	return fechasmedio;
+};
+
+
+        $(function() {
+       
+            var fechas_entrada = <?php echo json_encode($fechasEntrada) ?>;
+            var fechas_salida = <?php echo json_encode($fechasSalida) ?>;  
+            var resultado = [];
+            for(var i=0; i < fechas_entrada.length; i++){
+            var fechasEntrada= moment(fechas_entrada[i]); 
+            var fechasSalida = moment(fechas_salida[i]);
+            resultado.push(diasEntreFechas(fechasEntrada, fechasSalida));
+            }
+            console.log(resultado.toString());
+            $('#datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                startDate: '+1d',
+                datesDisabled:resultado.toString(),
+                clearBtn:true
+            });
+            
+        });
+</script>
+
+
+
+
+<script type="text/javascript">
+  var diasEntreFechas = function(fechasEntrada, fechasSalida) {
+  	var dia_actual = fechasEntrada;
+    var fechasmedio = [];
+  	while (dia_actual.isSameOrBefore(fechasSalida)) {
+    	fechasmedio.push(dia_actual.format('YYYY-MM-DD'));
+   		dia_actual.add(1, 'days');
+  	}
+  	return fechasmedio;
+};
+
+
+        $(function() {
+            var fechas_entrada = <?php echo json_encode($fechasEntrada) ?>;
+            var fechas_salida = <?php echo json_encode($fechasSalida) ?>;  
+            var resultado = [];
+            for(var i=0; i < fechas_entrada.length; i++){
+            var fechasEntrada= moment(fechas_entrada[i]); 
+            var fechasSalida = moment(fechas_salida[i]);
+            resultado.push(diasEntreFechas(fechasEntrada, fechasSalida));
+            }
+            console.log(resultado.toString());
+            $('#datepicker1').datepicker({
+                format: 'yyyy-mm-dd',
+                startDate: '+1d',
+                datesDisabled:resultado.toString(),
+                clearBtn:true
+            });
+            
+        });
 </script>
 </div>
 

@@ -20,7 +20,7 @@
             <label for="ocupantes" class="form-label">Escribe el numero de ocupantes: </label>
             <input type="number" name="ocupantes" max="{{$casa->capacidad}}" min="1" value="{{ old('ocupantes') ?? $reserva->ocupantes }}" class="form-control" id="capacidad" aria-describedby="capacidad">
             @error("ocupantes")
-            <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-success">
+            <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-white">
                 {{ $message }}
             </div>
             @enderror
@@ -36,7 +36,7 @@
                      <input type="text" class="form-control" name="fechaEntrada" id="fechaEntrada" value="{{ old('fechaEntrada') ?? $reserva->fechaEntrada }}">
                 </div>
             @error("fechaEntrada")
-            <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-success">
+            <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-white">
                 {{ $message }}
             </div>
             @enderror
@@ -52,7 +52,7 @@
                      <input type="text" class="form-control" name="fechaSalida" id="fechaSalida" value="{{ old('fechaSalida') ?? $reserva->fechaSalida }}">
                 </div>
             @error("fechaSalida")
-            <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-success">
+            <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-white">
                 {{ $message }}
             </div>
             @enderror

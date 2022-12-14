@@ -33,7 +33,7 @@
                             <i class='fa fa-calendar' style='font-size:24px'></i>
                             </span>
                         </span>
-                     <input type="text" class="form-control" name="fechaEntrada" id="fechaEntrada" value="{{ old('fechaEntrada') ?? $reserva->fechaEntrada }}">
+                     <input type="text" onchange="precioTotal()" class="form-control" name="fechaEntrada" id="fechaEntrada" value="{{ old('fechaEntrada') ?? $reserva->fechaEntrada }}">
                 </div>
             @error("fechaEntrada")
             <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-white">
@@ -49,7 +49,7 @@
                             <i class='fa fa-calendar' style='font-size:24px'></i>
                             </span>
                         </span>
-                     <input type="text" class="form-control" name="fechaSalida" id="fechaSalida" value="{{ old('fechaSalida') ?? $reserva->fechaSalida }}">
+                     <input type="text" onchange="precioTotal()" class="form-control" name="fechaSalida" id="fechaSalida" value="{{ old('fechaSalida') ?? $reserva->fechaSalida }}">
                 </div>
             @error("fechaSalida")
             <div class="border border-danger rounded-b bg-danger mt-1 px-4 py-3 text-white">
@@ -81,7 +81,7 @@ function precioTotal() {
         let difference = fecha2 - fecha1;
         dias = difference / (1000 * 3600 * 24);
 
-    console.log(dias);
+
     document.getElementById("precio").innerHTML = "El precio total por "+dias+" dias es de "+precio*dias+" €";
 }
 }
@@ -99,7 +99,7 @@ function precioTotal() {
 
 
         $(function() {
-       
+        
             var fechas_entrada = <?php echo json_encode($fechasEntrada) ?>;
             var fechas_salida = <?php echo json_encode($fechasSalida) ?>;  
             var resultado = [];

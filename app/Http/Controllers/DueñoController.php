@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Casas;
+use App\Models\Reservas;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -140,7 +141,13 @@ class DueñoController extends Controller
 
     public function destroy(Casas $casa)
     {
+        $reserva = Reservas::all()->where('casa_id','=',$casa->id);
+        if(count($reserva)==0){
         $casa->delete();
+        }else{
+            return redirect(route("casas.index"))
+            ->with("error", __("La casa tiene reservas por lo que no puede ser eliminada"));
+        }
         return back()->with("success", __("Casa eliminada!"));
     }
 

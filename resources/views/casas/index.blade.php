@@ -1,9 +1,14 @@
 @extends("layouts.casas")
 @section("content")
- @if (session('success'))
-    <div class="bg-danger text-center border border-danger text-success px-4 py-3 rounded relative" role="alert">
-    <p><strong class="font-bold">{{ session('success') }}</strong></p>
-    </div>
+@if (session('success'))
+<div class="alert alert-success text-center" role="alert">
+    <strong>{{ session('success') }}</strong>
+</div>
+@endif
+@if (session('error'))
+<div class="alert alert-danger text-center" role="alert">
+    <strong>{{ session('error') }}</strong>
+</div>
 @endif
 <!-- Cuerpo -->
 <div class="row mt-4 justify-content-center">
